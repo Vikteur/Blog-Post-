@@ -1,6 +1,7 @@
 import React from 'react';
 import { BlogPostCard } from '../components/BlogPostCard';
 import { useBlogPosts } from '../hooks/useBlogPosts';
+import { SearchBar } from '../components/SearchBar';
 export function Home() {
   const {
     posts,
@@ -8,6 +9,9 @@ export function Home() {
     error
   } = useBlogPosts();
   return <div className="max-w-7xl mx-auto">
+      <div className="mb-8 max-w-lg mx-auto">
+        <SearchBar />
+      </div>
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900">Latest Posts</h2>
         <p className="text-gray-600 mt-1">
