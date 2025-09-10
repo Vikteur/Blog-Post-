@@ -1,19 +1,16 @@
 import React from 'react';
-export interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  topic: string;
-  author: string;
-  image?: string;
-}
+import { useNavigate } from 'react-router-dom';
+import { BlogPost } from '../types';
 interface BlogPostCardProps {
   post: BlogPost;
 }
 export function BlogPostCard({
   post
 }: BlogPostCardProps) {
+  const navigate = useNavigate();
+  const handleReadMore = () => {
+    navigate(`/post/${post.id}`);
+  };
   return <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {post.image && <div className="h-48 overflow-hidden">
           <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
@@ -29,7 +26,7 @@ export function BlogPostCard({
         <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-500">By {post.author}</span>
-          <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+          <button onClick={handleReadMore} className="text-blue-600 hover:text-blue-800 text-sm font-medium" aria-label={`Read more about ${post.title}`}>
             Read More
           </button>
         </div>

@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { App } from './App';
-import { Profile } from './pages/Profile';
+import { BlogPostDetail } from './pages/BlogPostDetail';
 export function AppRouter() {
   return <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/profile" element={<App page="profile" />} />
+        <Route path="/portfolio" element={<App page="portfolio" />} />
+        <Route path="/post/:postId" element={<BlogPostDetail />} />
       </Routes>
     </BrowserRouter>;
 }
