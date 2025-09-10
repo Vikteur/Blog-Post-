@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { XIcon, HomeIcon, BookmarkIcon, TrendingUpIcon, UserIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 interface SidenavProps {
   isOpen: boolean;
   onClose: () => void;
@@ -46,10 +47,10 @@ export function Sidenav({
         <nav className="mt-4">
           <ul>
             <li>
-              <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+              <Link to="/" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100" onClick={onClose}>
                 <HomeIcon className="h-5 w-5 mr-3 text-gray-500" />
                 <span>Home</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
@@ -64,10 +65,10 @@ export function Sidenav({
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100">
+              <Link to="/profile" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100" onClick={onClose}>
                 <UserIcon className="h-5 w-5 mr-3 text-gray-500" />
                 <span>Profile</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
