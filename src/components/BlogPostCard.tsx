@@ -1,0 +1,38 @@
+import React from 'react';
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  topic: string;
+  author: string;
+  image?: string;
+}
+interface BlogPostCardProps {
+  post: BlogPost;
+}
+export function BlogPostCard({
+  post
+}: BlogPostCardProps) {
+  return <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      {post.image && <div className="h-48 overflow-hidden">
+          <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+        </div>}
+      <div className="p-5">
+        <div className="flex items-center mb-2">
+          <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+            {post.topic}
+          </span>
+          <span className="text-gray-500 text-sm ml-auto">{post.date}</span>
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
+        <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-500">By {post.author}</span>
+          <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            Read More
+          </button>
+        </div>
+      </div>
+    </div>;
+}
