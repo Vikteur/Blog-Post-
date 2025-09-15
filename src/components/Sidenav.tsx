@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { XIcon, HomeIcon, BriefcaseIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 interface SidenavProps {
@@ -82,7 +82,7 @@ export function Sidenav({
           </ul>
         </nav>
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t">
-          <p className="text-sm text-gray-500">© 2023 Daily Blog</p>
+          <p className="text-sm text-gray-500">© 2025 Viktor Van Steenweghen</p>
         </div>
       </div>
     </>;

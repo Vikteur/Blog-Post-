@@ -7,7 +7,7 @@ const mockProfile: ProfileInfo = {
   title: 'Senior Software Developer',
   email: 'john.doe@example.com',
   location: 'San Francisco, CA',
-  birthDate: 'January 15, 1990',
+  birthDate: new Date('1990-01-15'),
   about: "I'm a passionate software developer with over 8 years of experience building web applications and services. I enjoy solving complex problems and learning new technologies. When I'm not coding, you can find me hiking or reading about the latest tech trends.",
   avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
   skills: [{
@@ -41,29 +41,29 @@ const mockProfile: ProfileInfo = {
   }, {
     name: 'AWS',
     level: 80,
-    category: 'tool'
+    category: 'tools'
   }, {
     name: 'Docker',
     level: 75,
-    category: 'tool'
+    category: 'tools'
   }, {
     name: 'Git',
     level: 95,
-    category: 'tool'
+    category: 'tools'
   }],
   workExperience: [{
     id: '1',
     title: 'Senior Software Developer',
     company: 'Tech Innovations Inc.',
-    startDate: 'Jan 2020',
-    endDate: 'Present',
+  startDate: '2020-01-01T00:00:00.000Z',
+  endDate: '',
     description: 'Lead developer for multiple client projects, managing a team of 5 developers. Implemented CI/CD pipelines that reduced deployment time by 40%. Architected and built a scalable microservices platform using React, Node.js, and AWS.'
   }, {
     id: '2',
     title: 'Full Stack Developer',
     company: 'Web Solutions Co.',
-    startDate: 'Mar 2016',
-    endDate: 'Dec 2019',
+  startDate: '2016-03-01T00:00:00.000Z',
+  endDate: '2019-12-01T00:00:00.000Z',
     description: 'Developed and maintained multiple client websites and web applications. Implemented responsive designs and improved site performance by 60%. Collaborated with design and marketing teams to deliver integrated solutions.'
   }],
   projects: [{
@@ -83,22 +83,22 @@ const mockProfile: ProfileInfo = {
     id: '1',
     title: 'AWS Certified Solutions Architect',
     issuer: 'Amazon Web Services',
-    date: 'Jun 2022'
+  date: '2022-06-01T00:00:00.000Z'
   }, {
     id: '2',
     title: 'Professional Scrum Master I',
     issuer: 'Scrum.org',
-    date: 'Mar 2021'
+  date: '2021-03-01T00:00:00.000Z'
   }, {
     id: '3',
     title: 'Google Cloud Professional Developer',
     issuer: 'Google Cloud',
-    date: 'Nov 2020'
+  date: '2020-11-01T00:00:00.000Z'
   }, {
     id: '4',
     title: 'React Certification',
     issuer: 'Meta (formerly Facebook)',
-    date: 'Aug 2019'
+  date: '2019-08-01T00:00:00.000Z'
   }]
 };
 // Implementation of the ProfileService

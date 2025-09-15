@@ -1,4 +1,4 @@
-import React from 'react';
+import { formatDate } from '../utils/formatDate';
 import { Mail, MapPin, Calendar, ExternalLink } from 'lucide-react';
 import { useProfile } from '../hooks/useProfile';
 export function Portfolio() {
@@ -33,7 +33,7 @@ export function Portfolio() {
     certificates
   } = profile;
   const programmingLanguages = skills.filter(skill => skill.category === 'language');
-  const frameworksAndTools = skills.filter(skill => skill.category === 'framework' || skill.category === 'tool');
+  const frameworksAndtoolss = skills.filter(skill => skill.category === 'framework' || skill.category === 'tools');
   return <div className="max-w-7xl mx-auto">
       {/* Header/Personal Info Section */}
       <section aria-labelledby="personal-info-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
@@ -55,7 +55,7 @@ export function Portfolio() {
               <div className="flex items-center text-gray-600">
                 <dt className="sr-only">Date of Birth</dt>
                 <Calendar className="h-5 w-5 mr-2" aria-hidden="true" />
-                <dd>Born: {profile.birthDate}</dd>
+                <dd>Born: {profile.birthDate ? formatDate(new Date(profile.birthDate)) : ''}</dd>
               </div>
               <div className="flex items-center text-gray-600">
                 <dt className="sr-only">Email</dt>
@@ -96,12 +96,12 @@ export function Portfolio() {
                   </h3>
                   <span className="text-gray-600">
                     <time dateTime={new Date(job.startDate).toISOString().split('T')[0]}>
-                      {job.startDate}
+                      {formatDate(new Date(job.startDate))}
                     </time>
                     {' - '}
                     {job.endDate ? <time dateTime={new Date(job.endDate).toISOString().split('T')[0]}>
-                        {job.endDate}
-                      </time> : 'Present'}
+                      {formatDate(new Date(job.endDate))}
+                    </time> : 'Present'}
                   </span>
                 </div>
                 <h4 className="text-lg text-blue-700 mb-2">{job.company}</h4>
@@ -139,10 +139,10 @@ export function Portfolio() {
           </div>
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Frameworks & Tools
+              Frameworks & toolss
             </h3>
             <div className="space-y-3">
-              {frameworksAndTools.map(skill => <div key={skill.name}>
+              {frameworksAndtoolss.map(skill => <div key={skill.name}>
                   <div className="flex justify-between mb-1">
                     <span className="text-gray-700" id={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
                       {skill.name}
@@ -197,9 +197,13 @@ export function Portfolio() {
         <dl className="space-y-4">
           {certificates.map(cert => <div key={cert.id} className="flex flex-col md:flex-row border-b pb-4">
               <dt className="md:w-1/4 mb-2 md:mb-0 text-gray-600">
-                <time dateTime={new Date(cert.date).toISOString().split('T')[0]}>
-                  {cert.date}
-                </time>
+                {cert.date && !isNaN(Date.parse(cert.date)) ? (
+                  <time dateTime={new Date(cert.date).toISOString().split('T')[0]}>
+                    {formatDate(new Date(cert.date))}
+                  </time>
+                ) : (
+                  <span>Invalid date</span>
+                )}
               </dt>
               <dd className="md:w-3/4">
                 <h3 className="text-lg font-semibold text-gray-900">

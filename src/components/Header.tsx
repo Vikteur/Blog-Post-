@@ -1,4 +1,3 @@
-import React from 'react';
 import { MenuIcon } from 'lucide-react';
 interface HeaderProps {
   onMenuClick: () => void;
@@ -13,7 +12,7 @@ export function Header({
             <MenuIcon className="h-6 w-6" aria-hidden="true" />
           </button>
           <h1 className="text-xl font-bold text-gray-900 absolute left-1/2 transform -translate-x-1/2">
-            Daily Blog
+            Viktor Van Steenweghen
           </h1>
           <div className="invisible" aria-hidden="true">
             {/* This is an invisible element to balance the flex layout */}
