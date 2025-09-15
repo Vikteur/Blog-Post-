@@ -10,6 +10,7 @@ export function Sidenav({
   onClose
 }: SidenavProps) {
   const sidenavRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   // Close sidenav when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -45,16 +46,23 @@ export function Sidenav({
       document.removeEventListener('keydown', handleEscKey);
     };
   }, [isOpen, onClose]);
+  // Focus management - focus the close button when sidenav opens
+  useEffect(() => {
+    if (isOpen && closeButtonRef.current) {
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 100);
+    }
+  }, [isOpen]);
   return <>
       {/* Backdrop */}
       {isOpen && <div className="fixed inset-0 z-20 bg-black bg-opacity-50 transition-opacity" aria-hidden="true" />}
       {/* Sidenav */}
-      <div ref={sidenavRef} role="dialog" aria-modal="true" aria-label="Site navigation" className={`fixed top-0 left-0 z-30 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
+      <div ref={sidenavRef} id="site-navigation" role="dialog" aria-modal="true" aria-label="Site navigation" className={`fixed top-0 left-0 z-30 h-full w-64 bg-white shadow-lg transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`} tabIndex={isOpen ? 0 : -1}>
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-bold text-gray-900">Daily Blog</h2>
-          <button onClick={onClose} className="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-label="Close menu">
+          <button ref={closeButtonRef} onClick={onClose} className="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Close navigation menu">
             <XIcon className="h-6 w-6" aria-hidden="true" />
-            <span className="sr-only">Close menu</span>
           </button>
         </div>
         <nav className="mt-4" aria-label="Main navigation">
