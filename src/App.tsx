@@ -16,7 +16,7 @@ export function App({
       <Header onMenuClick={() => setSidenavOpen(true)} />
       <Sidenav isOpen={sidenavOpen} onClose={() => setSidenavOpen(false)} />
       <main id="main-content" className="flex-1 px-4 py-8 md:px-6 lg:px-8">
-        {page === 'portfolio' ? <Portfolio /> : <Home />}
+        {page === 'blogs' ? <Home /> : <Portfolio />}
       </main>
     </div>;
 }

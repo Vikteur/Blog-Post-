@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nSwap homepage and portfolio, rename to blogs\n\n- Portfolio \\(about me\\) is now the homepage\n- Home \\(blog posts\\) moved to /blogs\n- Updated navigation links and icons\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)"
+    ]
+  }
+}

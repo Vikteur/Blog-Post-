@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { XIcon, HomeIcon, BriefcaseIcon } from 'lucide-react';
+import { XIcon, HomeIcon, BookOpenIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 interface SidenavProps {
   isOpen: boolean;
@@ -74,9 +74,9 @@ export function Sidenav({
               </Link>
             </li>
             <li>
-              <Link to="/portfolio" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" onClick={onClose}>
-                <BriefcaseIcon className="h-5 w-5 mr-3 text-gray-500" aria-hidden="true" />
-                <span>Portfolio</span>
+              <Link to="/blogs" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" onClick={onClose}>
+                <BookOpenIcon className="h-5 w-5 mr-3 text-gray-500" aria-hidden="true" />
+                <span>Blogs</span>
               </Link>
             </li>
           </ul>

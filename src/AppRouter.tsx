@@ -5,7 +5,7 @@ export function AppRouter() {
   return <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/portfolio" element={<App page="portfolio" />} />
+        <Route path="/blogs" element={<App page="blogs" />} />
         <Route path="/post/:postId" element={<BlogPostDetail />} />
       </Routes>
     </BrowserRouter>;
