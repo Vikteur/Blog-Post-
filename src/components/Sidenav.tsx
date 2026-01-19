@@ -88,7 +88,7 @@ export function Sidenav({
             <li>
               <a href="https://jcast.dev/" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" onClick={onClose}>
                 <MicIcon className="h-5 w-5 mr-3 text-gray-500" aria-hidden="true" />
-                <span>Podcast</span>
+                <span>JCast</span>
               </a>
             </li>
           </ul>
