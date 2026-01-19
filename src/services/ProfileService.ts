@@ -8,7 +8,7 @@ const mockProfile: ProfileInfo = {
   email: 'vansteenweghenviktor@gmail.com',
   location: 'Rotselaar, Belgium',
   birthDate: new Date('1998-08-12'),
-  about: "I build scalable web apps, break them, fix them, and ship them again. 2.5 years in the running, powered by modern tech and a sprinkle of AI. When I’m not coding, I’m co-hosting the Jcast podcast.",
+  about: "I build scalable web apps, break them, fix them, and ship them again. 2,5 years in the running, powered by modern tech and a sprinkle of AI. When I’m not coding, I’m co-hosting the Jcast podcast.",
   avatar: '/Zelfportret.jpg',
   
   workExperience: [{
