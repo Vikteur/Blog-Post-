@@ -1,5 +1,5 @@
 import { formatDate } from '../utils/formatDate';
-import { Mail, MapPin, Calendar, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Calendar, ExternalLink, LinkedinIcon, MicIcon } from 'lucide-react';
 import { useProfile } from '../hooks/useProfile';
 export function Portfolio() {
   // Always use default user ID '1' since we no longer have authentication
@@ -70,6 +70,24 @@ export function Portfolio() {
                 <dt className="sr-only">Location</dt>
                 <MapPin className="h-5 w-5 mr-2" aria-hidden="true" />
                 <dd>{profile.location}</dd>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <dt className="sr-only">LinkedIn</dt>
+                <LinkedinIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+                <dd>
+                  <a href="https://www.linkedin.com/in/viktorvansteenweghen/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
+                    LinkedIn
+                  </a>
+                </dd>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <dt className="sr-only">Podcast</dt>
+                <MicIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+                <dd>
+                  <a href="https://jcast.dev/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
+                    JCast
+                  </a>
+                </dd>
               </div>
             </dl>
             <div className="border-t pt-4 mt-4">

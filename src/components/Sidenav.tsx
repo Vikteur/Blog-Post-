@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { XIcon, HomeIcon, BookOpenIcon, LinkedinIcon, MicIcon } from 'lucide-react';
+import { XIcon, HomeIcon, BookOpenIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 interface SidenavProps {
   isOpen: boolean;
@@ -78,18 +78,6 @@ export function Sidenav({
                 <BookOpenIcon className="h-5 w-5 mr-3 text-gray-500" aria-hidden="true" />
                 <span>Blogs</span>
               </Link>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/viktorvansteenweghen/" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" onClick={onClose}>
-                <LinkedinIcon className="h-5 w-5 mr-3 text-gray-500" aria-hidden="true" />
-                <span>LinkedIn</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://jcast.dev/" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" onClick={onClose}>
-                <MicIcon className="h-5 w-5 mr-3 text-gray-500" aria-hidden="true" />
-                <span>JCast</span>
-              </a>
             </li>
           </ul>
         </nav>
