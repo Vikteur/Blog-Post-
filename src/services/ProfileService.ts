@@ -3,103 +3,76 @@ import { IProfileService } from './interfaces';
 // Mock profile data
 const mockProfile: ProfileInfo = {
   id: '1',
-  name: 'John Doe',
-  title: 'Senior Software Developer',
-  email: 'john.doe@example.com',
-  location: 'San Francisco, CA',
-  birthDate: new Date('1990-01-15'),
-  about: "I'm a passionate software developer with over 8 years of experience building web applications and services. I enjoy solving complex problems and learning new technologies. When I'm not coding, you can find me hiking or reading about the latest tech trends.",
-  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-  skills: [{
-    name: 'JavaScript',
-    level: 95,
-    category: 'language'
-  }, {
-    name: 'TypeScript',
-    level: 90,
-    category: 'language'
-  }, {
-    name: 'Python',
-    level: 80,
-    category: 'language'
-  }, {
-    name: 'Java',
-    level: 75,
-    category: 'language'
-  }, {
-    name: 'HTML/CSS',
-    level: 95,
-    category: 'language'
-  }, {
-    name: 'React',
-    level: 90,
-    category: 'framework'
-  }, {
-    name: 'Node.js',
-    level: 85,
-    category: 'framework'
-  }, {
-    name: 'AWS',
-    level: 80,
-    category: 'tools'
-  }, {
-    name: 'Docker',
-    level: 75,
-    category: 'tools'
-  }, {
-    name: 'Git',
-    level: 95,
-    category: 'tools'
-  }],
+  name: 'Viktor Van Steenweghen',
+  title: 'Software Developer',
+  email: 'vansteenweghenviktor@gmail.com',
+  location: 'Rotselaar, Belgium',
+  birthDate: new Date('1998-08-12'),
+  about: "I’m a software developer with 2.5 years of experience delivering scalable web applications and services, continuously learning modern tech and leveraging AI to boost productivity and quality.",
+  avatar: '/Zelfportret.jpg',
+  
   workExperience: [{
     id: '1',
-    title: 'Senior Software Developer',
-    company: 'Tech Innovations Inc.',
-  startDate: '2020-01-01T00:00:00.000Z',
+    title: 'Software Developer',
+    company: 'Sopra Steria',
+    companyUrl: 'https://www.soprasteria.com/',
+  startDate: '2023-09-01T00:00:00.000Z',
   endDate: '',
-    description: 'Lead developer for multiple client projects, managing a team of 5 developers. Implemented CI/CD pipelines that reduced deployment time by 40%. Architected and built a scalable microservices platform using React, Node.js, and AWS.'
-  }, {
-    id: '2',
-    title: 'Full Stack Developer',
-    company: 'Web Solutions Co.',
-  startDate: '2016-03-01T00:00:00.000Z',
-  endDate: '2019-12-01T00:00:00.000Z',
-    description: 'Developed and maintained multiple client websites and web applications. Implemented responsive designs and improved site performance by 60%. Collaborated with design and marketing teams to deliver integrated solutions.'
-  }],
+  description: 'Consulting for various clients, developing web applications and services using modern technologies like Java, Angular, Spring Boot and AWS.'
+    }],
   projects: [{
     id: '1',
-    title: 'E-commerce Platform',
-    description: 'A full-featured e-commerce platform with inventory management, payment processing, and analytics dashboard.',
-    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'Node.js', 'MongoDB']
+    title: 'MijnGezondheid.be',
+    description: 'MijnGezondheid.be is a secure digital platform in Belgium where citizens can access and manage their personal health information and share it with healthcare providers.',
+    image: '/mijngezondheid.png',
+    technologies: ['Java', 'Spring Boot', 'Angular', 'AWS'],
+    url: 'https://www.mijngezondheid.belgie.be/'
   }, {
     id: '2',
-    title: 'Analytics Dashboard',
-    description: 'Real-time analytics dashboard for monitoring application performance and user behavior.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['Vue.js', 'D3.js', 'Firebase']
+    title: 'IDEWE',
+    description: 'A Belgian external service for prevention and protection at work, offering occupational health, safety, and wellbeing support for employers and employees.',
+    image: '/edezwe.png',
+    technologies: ['Java', 'Spring Boot', 'Angular'],
+    url: 'https://www.idewe.be/'
   }],
   certificates: [{
     id: '1',
-    title: 'AWS Certified Solutions Architect',
+    title: 'AWS Certified Cloud Practitioner',
     issuer: 'Amazon Web Services',
-  date: '2022-06-01T00:00:00.000Z'
+  date: '2024-01-01T00:00:00.000Z'
+  }],
+
+  skills: [
+   {
+    name: 'Java',
+    level: 75,
+    category: 'language'
+  },{
+    name: 'Spring Boot',
+    level: 70,
+    category: 'framework'
+  },{
+    name: 'Angular',
+    level: 60,
+    category: 'language'
+  },{
+    name: 'Docker',
+    level: 70,
+    category: 'tools'
   }, {
-    id: '2',
-    title: 'Professional Scrum Master I',
-    issuer: 'Scrum.org',
-  date: '2021-03-01T00:00:00.000Z'
-  }, {
-    id: '3',
-    title: 'Google Cloud Professional Developer',
-    issuer: 'Google Cloud',
-  date: '2020-11-01T00:00:00.000Z'
-  }, {
-    id: '4',
-    title: 'React Certification',
-    issuer: 'Meta (formerly Facebook)',
-  date: '2019-08-01T00:00:00.000Z'
-  }]
+    name: 'Git',
+    level: 80,
+    category: 'tools'
+  },{
+    name: 'HTML/CSS',
+    level: 70,
+    category: 'language'
+  }, 
+   {
+    name: 'AWS',
+    level: 60,
+    category: 'tools'
+  }],
 };
 // Implementation of the ProfileService
 export class ProfileService implements IProfileService {

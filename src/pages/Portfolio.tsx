@@ -40,13 +40,13 @@ export function Portfolio() {
         <h2 id="personal-info-heading" className="text-2xl font-bold text-gray-900 mb-4 sr-only">
           Personal Information
         </h2>
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-1/3 flex justify-center md:justify-start">
+        <div className="flex flex-col md:flex-row md:gap-8">
+          <div className="flex justify-center md:justify-start shrink-0">
             <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0">
-              <img src={profile.avatar} alt={`${profile.name}`} className="w-full h-full object-cover" />
+              <img src={profile.avatar} alt={`${profile.name}`} className="w-full h-full object-cover object-center" />
             </div>
           </div>
-          <div className="md:w-2/3 md:pl-8">
+          <div className="flex-1">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
               {profile.name}
             </h2>
@@ -104,7 +104,11 @@ export function Portfolio() {
                     </time> : 'Present'}
                   </span>
                 </div>
-                <h4 className="text-lg text-blue-700 mb-2">{job.company}</h4>
+                {job.companyUrl ? (
+                  <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="text-lg text-blue-700 hover:text-blue-900 hover:underline mb-2 inline-block">{job.company}</a>
+                ) : (
+                  <h4 className="text-lg text-blue-700 mb-2">{job.company}</h4>
+                )}
               </header>
               <p className="text-gray-700">{job.description}</p>
             </article>)}
