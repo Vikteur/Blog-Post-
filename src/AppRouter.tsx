@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { App } from './App';
 import { BlogPostDetail } from './pages/BlogPostDetail';
 export function AppRouter() {
@@ -7,6 +7,8 @@ export function AppRouter() {
         <Route path="/" element={<App />} />
         <Route path="/blogs" element={<App page="blogs" />} />
         <Route path="/post/:postId" element={<BlogPostDetail />} />
+        <Route path="/portfolio" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>;
 }
