@@ -1,4 +1,4 @@
-import React from 'react';
+import { formatDate } from '../utils/formatDate';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeftIcon, UserIcon, CalendarIcon, TagIcon } from 'lucide-react';
 import { useBlogPost } from '../hooks/useBlogPost';
@@ -14,10 +14,14 @@ export function BlogPostDetail() {
     error
   } = useBlogPost(postId);
   return <div className="max-w-4xl mx-auto">
-      <Link to="/" className="inline-flex items-center mb-6 text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-1">
-        <ArrowLeftIcon className="h-4 w-4 mr-2" aria-hidden="true" />
-        Back to all posts
-      </Link>
+        <Link
+          to="/"
+          className="mb-4 inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-normal rounded border border-blue-200 hover:from-blue-600 hover:to-indigo-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition-all duration-150 shadow"
+          aria-label="Back to all posts"
+        >
+          <ArrowLeftIcon className="h-3 w-3 mr-0.5" aria-hidden="true" />
+          <span className="tracking-wide">Back to all posts</span>
+        </Link>
       {isLoading && <div className="text-center py-10" aria-live="polite">
           <p className="text-gray-500">Loading post...</p>
         </div>}
@@ -40,7 +44,7 @@ export function BlogPostDetail() {
               <div className="flex items-center mr-6 mb-2">
                 <CalendarIcon className="h-4 w-4 mr-2" aria-hidden="true" />
                 <time dateTime={new Date(post.date).toISOString()}>
-                  {post.date}
+                  {formatDate(new Date(post.date))}
                 </time>
               </div>
               <div className="flex items-center mb-2">

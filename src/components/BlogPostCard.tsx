@@ -1,4 +1,4 @@
-import React from 'react';
+import { formatDate } from '../utils/formatDate';
 import { useNavigate } from 'react-router-dom';
 import { BlogPost } from '../types';
 interface BlogPostCardProps {
@@ -21,11 +21,11 @@ export function BlogPostCard({
             {post.topic}
           </span>
           <time dateTime={new Date(post.date).toISOString()} className="text-gray-500 text-sm ml-2">
-            {post.date}
+            {formatDate(new Date(post.date))}
           </time>
         </div>
         <h2 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h2>
-        <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+        <p className="text-gray-600 mb-4 line-clamp-3">{post.summary}</p>
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-500">By {post.author}</span>
           <button onClick={handleReadMore} className="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label={`Read more about ${post.title}`}>

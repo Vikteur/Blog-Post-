@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { formatDate } from '../utils/formatDate';
 import { XIcon } from 'lucide-react';
-import { BlogPost } from './BlogPostCard';
+import { BlogPost } from '../types';
 interface CreateBlogPostModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -21,12 +22,9 @@ export function CreateBlogPostModal({
     const newPost: BlogPost = {
       id: Date.now().toString(),
       title,
-      excerpt: content.substring(0, 150) + (content.length > 150 ? '...' : ''),
-      date: new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }),
+      content, 
+      summary: content.substring(0, 150) + (content.length > 150 ? '...' : ''),
+  date: formatDate(new Date()),
       topic,
       author: 'Your Name',
       image: imageUrl || undefined

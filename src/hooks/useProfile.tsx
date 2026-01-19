@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ProfileInfo } from '../types';
 import { profileService } from '../services/ProfileService';
 export function useProfile(userId: string) {

@@ -9,7 +9,7 @@ export interface BlogPost {
   id: string;
   title: string;
   content: string;
-  excerpt: string;
+  summary: string;
   date: string;
   topic: string;
   author: string;
@@ -25,7 +25,7 @@ export interface Certificate {
 export interface Skill {
   name: string;
   level: number;
-  category: 'language' | 'framework' | 'tool' | 'other';
+  category: 'language' | 'framework' | 'tools' | 'other';
 }
 export interface Project {
   id: string;
@@ -39,6 +39,7 @@ export interface WorkExperience {
   id: string;
   title: string;
   company: string;
+  companyUrl?: string;
   startDate: string;
   endDate?: string;
   description: string;
@@ -49,7 +50,7 @@ export interface ProfileInfo {
   title: string;
   email: string;
   location: string;
-  birthDate: string;
+  birthDate: Date;
   about: string;
   avatar: string;
   skills: Skill[];
