@@ -109,26 +109,6 @@ The future of web development is exciting and full of possibilities. By staying 
   author: 'Alex Johnson',
   authorId: '5',
   image: 'https://images.unsplash.com/photo-1583339793403-3d9b001b6008?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-}, {
-  id: '5',
-  title: 'Introduction to TypeScript',
-  content: 'Full content here...',
-  summary: 'Learn the basics of TypeScript and how it can improve your JavaScript development.',
-  date: '2023-04-20T00:00:00.000Z',
-  topic: 'TypeScript',
-  author: 'Michael Brown',
-  authorId: '6',
-  image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-}, {
-  id: '6',
-  title: 'Optimizing React Performance',
-  content: 'Full content here...',
-  summary: 'Tips and tricks to make your React applications faster and more efficient.',
-  date: '2023-04-15T00:00:00.000Z',
-  topic: 'React',
-  author: 'Sarah Miller',
-  authorId: '7',
-  image: 'https://images.unsplash.com/photo-1552308995-2baac1ad5490?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
 }];
 // Implementation of the BlogService
 export class BlogService implements IBlogService {
