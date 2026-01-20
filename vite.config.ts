@@ -5,15 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    minify: 'terser',
+    minify: 'esbuild',
     sourcemap: false,
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info']
-      }
-    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -23,6 +16,9 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true
+  },
+  esbuild: {
+    drop: ['console', 'debugger']
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async']
