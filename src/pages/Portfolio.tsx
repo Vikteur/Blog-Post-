@@ -79,7 +79,7 @@ export function Portfolio() {
         <div className="flex flex-col md:flex-row md:gap-8">
           <div className="flex justify-center md:justify-start shrink-0">
             <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0">
-              <img src={profile.avatar} alt={`${profile.name}`} className="w-full h-full object-cover object-center" />
+              <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} className="w-full h-full object-cover object-center" />
             </div>
           </div>
           <div className="flex-1">
@@ -226,7 +226,7 @@ export function Portfolio() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map(project => <article key={project.id} className="border rounded-lg overflow-hidden">
               <div className="h-48 bg-gray-200">
-                {project.image && <img src={project.image} alt={`Screenshot of ${project.title} project`} className="w-full h-full object-cover" />}
+                {project.image && <img src={project.image} alt={`Screenshot of ${project.title} project`} width={640} height={384} className="w-full h-full object-cover" />}
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
