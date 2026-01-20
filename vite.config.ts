@@ -5,26 +5,26 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    // Enable minification for production
     minify: 'terser',
-    // Generate source maps for debugging
     sourcemap: false,
-    // Optimize chunk splitting
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info']
+      }
+    },
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'utils': ['lucide-react']
+          'react-vendor': ['react', 'react-dom', 'react-router-dom']
         }
       }
     },
-    // Set chunk size warning limit
     chunkSizeWarningLimit: 1000,
-    // Enable CSS code splitting
     cssCodeSplit: true
   },
-  // Enable preloading of modules
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'lucide-react', 'react-helmet-async']
+    include: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async']
   }
 })
