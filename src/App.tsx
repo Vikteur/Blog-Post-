@@ -11,7 +11,7 @@ export function App({
   page = 'home'
 }: AppProps) {
   const [sidenavOpen, setSidenavOpen] = useState(false);
-  return <div className="flex flex-col min-h-screen bg-gray-50">
+  return <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <SkipToContent />
       <Header onMenuClick={() => setSidenavOpen(true)} isMenuOpen={sidenavOpen} />
       <Sidenav isOpen={sidenavOpen} onClose={() => setSidenavOpen(false)} />

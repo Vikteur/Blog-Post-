@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeftIcon, UserIcon, CalendarIcon, TagIcon } from 'lucide-react';
 import { useBlogPost } from '../hooks/useBlogPost';
 import { SEO } from '../components/SEO';
+import { Button } from '../components/ui/button';
+import { Badge } from '../components/ui/badge';
+import { Separator } from '../components/ui/separator';
 export function BlogPostDetail() {
   const {
     postId
@@ -55,53 +58,60 @@ export function BlogPostDetail() {
           structuredData={structuredData}
         />
       )}
-      <nav aria-label="Breadcrumb">
-        <Link
-          to="/"
-          className="mb-4 inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-normal rounded border border-blue-200 hover:from-blue-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-150 shadow"
-          aria-label="Back to all posts"
+      <nav aria-label="Breadcrumb" className="mb-6">
+        <Button
+          asChild
+          variant="default"
+          size="sm"
+          className="bg-primary hover:bg-primary/90 shadow-lg"
         >
-          <ArrowLeftIcon className="h-3 w-3 mr-0.5" aria-hidden="true" />
-          <span className="tracking-wide">Back to all posts</span>
-        </Link>
+          <Link to="/" aria-label="Back to all posts">
+            <ArrowLeftIcon className="h-4 w-4 mr-2" aria-hidden="true" />
+            Back to all posts
+          </Link>
+        </Button>
       </nav>
       {isLoading && <div className="text-center py-10" role="status" aria-live="polite">
-          <p className="text-gray-500">Loading post...</p>
+          <p className="text-muted-foreground">Loading post...</p>
         </div>}
-      {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert" aria-live="assertive">
+      {error && <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-3 rounded-lg mb-6" role="alert" aria-live="assertive">
           <p>{error}</p>
         </div>}
-      {!isLoading && !error && post && <article aria-labelledby="post-title">
-          {post.image && <figure className="mb-8 rounded-lg overflow-hidden h-72 md:h-96">
+      {!isLoading && !error && post && <article aria-labelledby="post-title" className="bg-card rounded-xl shadow-2xl overflow-hidden border-2 border-primary/10">
+          {post.image && <figure className="mb-0 h-72 md:h-96 relative overflow-hidden">
               <img src={post.image} alt={`Featured image for ${post.title}`} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
             </figure>}
-          <header className="mb-6">
-            <h1 id="post-title" className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {post.title}
-            </h1>
-            <div className="flex flex-wrap items-center text-gray-600 mb-6">
-              <div className="flex items-center mr-6 mb-2">
-                <UserIcon className="h-4 w-4 mr-2" aria-hidden="true" />
-                <span>By {post.author}</span>
+          <div className="p-6 md:p-8 lg:p-12">
+            <header className="mb-8">
+              <h1 id="post-title" className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent leading-tight">
+                {post.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
+                <div className="flex items-center gap-2">
+                  <UserIcon className="h-4 w-4" aria-hidden="true" />
+                  <span>By {post.author}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CalendarIcon className="h-4 w-4" aria-hidden="true" />
+                  <time dateTime={new Date(post.date).toISOString()}>
+                    {formatDate(new Date(post.date))}
+                  </time>
+                </div>
+                <div className="flex items-center gap-2">
+                  <TagIcon className="h-4 w-4" aria-hidden="true" />
+                  <Badge variant="secondary" className="bg-primary/10 text-primary">
+                    {post.topic}
+                  </Badge>
+                </div>
               </div>
-              <div className="flex items-center mr-6 mb-2">
-                <CalendarIcon className="h-4 w-4 mr-2" aria-hidden="true" />
-                <time dateTime={new Date(post.date).toISOString()}>
-                  {formatDate(new Date(post.date))}
-                </time>
-              </div>
-              <div className="flex items-center mb-2">
-                <TagIcon className="h-4 w-4 mr-2" aria-hidden="true" />
-                <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-                  {post.topic}
-                </span>
-              </div>
-            </div>
-          </header>
-          <div className="prose max-w-none">
-            <p className="whitespace-pre-line text-gray-700 leading-relaxed">
-              {post.content}
-            </p>
+              <Separator className="bg-primary/20" />
+            </header>
+            <section className="prose prose-lg max-w-none mt-6">
+              <p className="whitespace-pre-line leading-relaxed">
+                {post.content}
+              </p>
+            </section>
           </div>
         </article>}
     </div>;

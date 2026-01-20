@@ -1,9 +1,14 @@
 import { formatDate } from '../utils/formatDate';
 import { useNavigate } from 'react-router-dom';
 import { BlogPost } from '../types';
+import { Card, CardContent, CardFooter } from './ui/card';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+
 interface BlogPostCardProps {
   post: BlogPost;
 }
+
 export function BlogPostCard({
   post
 }: BlogPostCardProps) {
@@ -11,27 +16,32 @@ export function BlogPostCard({
   const handleReadMore = () => {
     navigate(`/post/${post.id}`);
   };
-  return <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      {post.image && <div className="h-48 overflow-hidden">
-          <img src={post.image} alt={post.title ? `Featured image for ${post.title}` : ''} className="w-full h-full object-cover" />
+  return <Card className="group overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 hover:border-primary/50">
+      {post.image && <div className="h-48 overflow-hidden relative">
+          <img 
+            src={post.image} 
+            alt={post.title ? `Featured image for ${post.title}` : ''} 
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>}
-      <div className="p-5">
-        <div className="mb-3">
-          <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+      <CardContent className="p-5">
+        <div className="mb-3 flex items-center gap-2">
+          <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
             {post.topic}
-          </span>
-          <time dateTime={new Date(post.date).toISOString()} className="text-gray-500 text-sm ml-2">
+          </Badge>
+          <time dateTime={new Date(post.date).toISOString()} className="text-muted-foreground text-sm">
             {formatDate(new Date(post.date))}
           </time>
         </div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h2>
-        <p className="text-gray-600 mb-4 line-clamp-3">{post.summary}</p>
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-500">By {post.author}</span>
-          <button onClick={handleReadMore} className="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label={`Read more about ${post.title}`}>
-            Read More
-          </button>
-        </div>
-      </div>
-    </article>;
+        <h2 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{post.title}</h2>
+        <p className="text-muted-foreground mb-4 line-clamp-3">{post.summary}</p>
+      </CardContent>
+      <CardFooter className="flex items-center justify-between p-5 pt-0">
+        <span className="text-sm text-muted-foreground">By {post.author}</span>
+        <Button onClick={handleReadMore} variant="ghost" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors" aria-label={`Read more about ${post.title}`}>
+          Read More
+        </Button>
+      </CardFooter>
+    </Card>;
 }
