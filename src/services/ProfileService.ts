@@ -9,7 +9,7 @@ const mockProfile: ProfileInfo = {
   location: 'Rotselaar, Belgium',
   birthDate: new Date('1998-08-12'),
   about: "I build scalable web apps, break them, fix them, and ship them again. 2,5 years in the running, powered by modern tech and a sprinkle of AI. When I’m not coding, I’m co-hosting the Jcast podcast.",
-  avatar: '/Zelfportret.jpg',
+  avatar: '/Zelfportret.webp',
   
   workExperience: [{
     id: '1',
@@ -24,14 +24,14 @@ const mockProfile: ProfileInfo = {
     id: '1',
     title: 'MijnGezondheid.be',
     description: 'MijnGezondheid.be is a secure digital platform in Belgium where citizens can access and manage their personal health information and share it with healthcare providers.',
-    image: '/mijngezondheid.png',
+    image: '/mijngezondheid.webp',
     technologies: ['Java', 'Spring Boot', 'Angular', 'AWS'],
     url: 'https://www.mijngezondheid.belgie.be/'
   }, {
     id: '2',
     title: 'IDEWE',
     description: 'A Belgian external service for prevention and protection at work, offering occupational health, safety, and wellbeing support for employers and employees.',
-    image: '/edezwe.png',
+    image: '/edezwe.webp',
     technologies: ['Java', 'Spring Boot', 'Angular'],
     url: 'https://www.idewe.be/'
   }],
