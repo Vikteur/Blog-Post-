@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { formatDate } from '../utils/formatDate';
 import { XIcon } from 'lucide-react';
 import { BlogPost } from '../types';

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "analytics-mcp": {
+      "command": "C:\\Users\\vvansteenwegh\\.local\\bin\\analytics-mcp.exe",
+      "args": [],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\vvansteenwegh\\AppData\\Roaming\\gcloud\\application_default_credentials.json",
+        "GOOGLE_CLOUD_PROJECT": "YOUR_PROJECT_ID"
+      }
+    }
+  }
+}

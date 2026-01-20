@@ -117,50 +117,9 @@ export class BlogService implements IBlogService {
     // In a real app, this would fetch from an API
     return Promise.resolve([...this.posts]);
   }
-  async getUserPosts(userId: string): Promise<BlogPost[]> {
-    // In a real app, this would filter posts by user ID from an API
-    return Promise.resolve(this.posts.filter(post => post.authorId === userId));
-  }
   async getPost(id: string): Promise<BlogPost | null> {
     const post = this.posts.find(p => p.id === id);
     return Promise.resolve(post || null);
-  }
-  // This method would be called by a GitHub webhook when a new document is uploaded
-  async createPostFromGithub(documentData: {
-    title: string;
-    content: string;
-    topic: string;
-    author: string;
-    image?: string;
-  }): Promise<BlogPost> {
-    const newPost: BlogPost = {
-      id: Date.now().toString(),
-      title: documentData.title,
-      content: documentData.content,
-      summary: documentData.content ? documentData.content.substring(0, 150) + (documentData.content.length > 150 ? '...' : '') : '',
-      date: new Date().toISOString(),
-
-      topic: documentData.topic,
-      author: documentData.author,
-      image: documentData.image
-    };
-    this.posts.unshift(newPost);
-    return Promise.resolve(newPost);
-  }
-  async updatePost(id: string, postData: Partial<BlogPost>): Promise<BlogPost | null> {
-    const index = this.posts.findIndex(p => p.id === id);
-    if (index === -1) return Promise.resolve(null);
-    const updatedPost = {
-      ...this.posts[index],
-      ...postData
-    };
-    this.posts[index] = updatedPost;
-    return Promise.resolve(updatedPost);
-  }
-  async deletePost(id: string): Promise<boolean> {
-    const initialLength = this.posts.length;
-    this.posts = this.posts.filter(p => p.id !== id);
-    return Promise.resolve(this.posts.length < initialLength);
   }
 }
 // Singleton instance for the application

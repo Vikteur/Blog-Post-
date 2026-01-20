@@ -21,28 +21,10 @@ export function useProfile(userId: string) {
   useEffect(() => {
     fetchProfile();
   }, [fetchProfile]);
-  const updateProfile = async (profileData: Partial<ProfileInfo>): Promise<ProfileInfo | null> => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const updatedProfile = await profileService.updateProfileInfo(userId, profileData);
-      if (updatedProfile) {
-        setProfile(updatedProfile);
-      }
-      return updatedProfile;
-    } catch (err) {
-      setError('Failed to update profile information');
-      console.error(err);
-      return null;
-    } finally {
-      setIsLoading(false);
-    }
-  };
   return {
     profile,
     isLoading,
     error,
-    fetchProfile,
-    updateProfile
+    fetchProfile
   };
 }

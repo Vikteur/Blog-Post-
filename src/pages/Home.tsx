@@ -1,4 +1,3 @@
-import React from 'react';
 import { BlogPostCard } from '../components/BlogPostCard';
 import { useBlogPosts } from '../hooks/useBlogPosts';
 import { SearchBar } from '../components/SearchBar';

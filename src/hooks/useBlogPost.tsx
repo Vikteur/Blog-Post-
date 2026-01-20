@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BlogPost } from '../types';
 import { blogService } from '../services/BlogService';
 export function useBlogPost(postId: string | undefined) {

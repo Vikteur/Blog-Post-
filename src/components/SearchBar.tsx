@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SearchIcon } from 'lucide-react';
 export function SearchBar() {
   const [searchQuery, setSearchQuery] = useState('');

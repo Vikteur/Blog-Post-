@@ -81,16 +81,6 @@ export class ProfileService implements IProfileService {
     // In a real app, this would fetch from an API
     return Promise.resolve(this.profiles.get(userId) || null);
   }
-  async updateProfileInfo(userId: string, info: Partial<ProfileInfo>): Promise<ProfileInfo | null> {
-    const existingProfile = this.profiles.get(userId);
-    if (!existingProfile) return Promise.resolve(null);
-    const updatedProfile = {
-      ...existingProfile,
-      ...info
-    };
-    this.profiles.set(userId, updatedProfile);
-    return Promise.resolve(updatedProfile);
-  }
 }
 // Singleton instance for the application
 export const profileService = new ProfileService();
