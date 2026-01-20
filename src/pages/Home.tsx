@@ -2,13 +2,47 @@ import React from 'react';
 import { BlogPostCard } from '../components/BlogPostCard';
 import { useBlogPosts } from '../hooks/useBlogPosts';
 import { SearchBar } from '../components/SearchBar';
+import { SEO } from '../components/SEO';
 export function Home() {
   const {
     posts,
     isLoading,
     error
   } = useBlogPosts();
-  return <div className="max-w-7xl mx-auto">
+  
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Viktor Van Steenweghen's Blog",
+    "description": "Latest articles and insights on web development, software engineering, and technology",
+    "url": "https://viktorvansteenweghen.com/blogs",
+    "author": {
+      "@type": "Person",
+      "name": "Viktor Van Steenweghen",
+      "url": "https://www.linkedin.com/in/viktorvansteenweghen/"
+    },
+    "blogPost": posts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "datePublished": post.date,
+      "author": {
+        "@type": "Person",
+        "name": post.author
+      },
+      "url": `https://viktorvansteenweghen.com/post/${post.id}`
+    }))
+  };
+  
+  return (
+    <>
+      <SEO
+        title="Blog"
+        description="Discover the latest articles and insights on web development, software engineering, React, TypeScript, and modern technology by Viktor Van Steenweghen."
+        canonicalUrl="https://viktorvansteenweghen.com/blogs"
+        ogType="website"
+        structuredData={structuredData}
+      />
+      <div className="max-w-7xl mx-auto">
       <div className="mb-8 max-w-lg mx-auto">
         <SearchBar />
       </div>
@@ -34,5 +68,7 @@ export function Home() {
             {posts.map(post => <BlogPostCard key={post.id} post={post} />)}
           </div>}
       </section>
-    </div>;
+    </div>
+    </>
+  );
 }

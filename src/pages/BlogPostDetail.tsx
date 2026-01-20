@@ -2,6 +2,7 @@ import { formatDate } from '../utils/formatDate';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeftIcon, UserIcon, CalendarIcon, TagIcon } from 'lucide-react';
 import { useBlogPost } from '../hooks/useBlogPost';
+import { SEO } from '../components/SEO';
 export function BlogPostDetail() {
   const {
     postId
@@ -14,7 +15,46 @@ export function BlogPostDetail() {
     error
   } = useBlogPost(postId);
 
+  const structuredData = post ? {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.content.substring(0, 200),
+    "image": post.image || "https://viktorvansteenweghen.com/og-image.jpg",
+    "datePublished": new Date(post.date).toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+      "url": "https://www.linkedin.com/in/viktorvansteenweghen/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Viktor Van Steenweghen",
+      "url": "https://viktorvansteenweghen.com/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://viktorvansteenweghen.com/post/${postId}`
+    },
+    "keywords": post.topic
+  } : undefined;
+
   return <div className="max-w-4xl mx-auto">
+      {post && (
+        <SEO
+          title={post.title}
+          description={post.content.substring(0, 160)}
+          canonicalUrl={`https://viktorvansteenweghen.com/post/${postId}`}
+          ogType="article"
+          ogImage={post.image || undefined}
+          article={{
+            publishedTime: new Date(post.date).toISOString(),
+            author: post.author,
+            tags: [post.topic]
+          }}
+          structuredData={structuredData}
+        />
+      )}
       <nav aria-label="Breadcrumb">
         <Link
           to="/"

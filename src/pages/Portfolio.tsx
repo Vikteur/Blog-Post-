@@ -1,6 +1,7 @@
 import { formatDate } from '../utils/formatDate';
 import { Mail, MapPin, Calendar, ExternalLink, LinkedinIcon, MicIcon } from 'lucide-react';
 import { useProfile } from '../hooks/useProfile';
+import { SEO } from '../components/SEO';
 export function Portfolio() {
   // Always use default user ID '1' since we no longer have authentication
   const userId = '1';
@@ -34,7 +35,42 @@ export function Portfolio() {
   } = profile;
   const programmingLanguages = skills.filter(skill => skill.category === 'language');
   const frameworksAndtoolss = skills.filter(skill => skill.category === 'framework' || skill.category === 'tools');
-  return <div className="max-w-7xl mx-auto">
+  
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": profile.name,
+    "jobTitle": profile.title,
+    "email": profile.email,
+    "url": "https://viktorvansteenweghen.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": profile.location
+    },
+    "image": profile.avatar,
+    "description": profile.about,
+    "sameAs": [
+      "https://www.linkedin.com/in/viktorvansteenweghen/",
+      "https://jcast.dev/"
+    ],
+    "alumniOf": certificates.map(cert => ({
+      "@type": "EducationalOrganization",
+      "name": cert.issuer
+    })),
+    "knowsAbout": skills.map(skill => skill.name)
+  };
+  
+  return (
+    <>
+      <SEO
+        title="Portfolio"
+        description={`${profile.title} - ${profile.about}`}
+        canonicalUrl="https://viktorvansteenweghen.com/"
+        ogType="profile"
+        structuredData={structuredData}
+        ogImage={profile.avatar}
+      />
+      <div className="max-w-7xl mx-auto">
       {/* Header/Personal Info Section */}
       <section aria-labelledby="personal-info-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
         <h2 id="personal-info-heading" className="text-2xl font-bold text-gray-900 mb-4 sr-only">
@@ -236,5 +272,7 @@ export function Portfolio() {
             </div>)}
         </dl>
       </section>
-    </div>;
+    </div>
+    </>
+  );
 }
