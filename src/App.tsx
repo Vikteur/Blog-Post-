@@ -13,7 +13,7 @@ export function App({
   const [sidenavOpen, setSidenavOpen] = useState(false);
   return <div className="flex flex-col min-h-screen bg-gray-50">
       <SkipToContent />
-      <Header onMenuClick={() => setSidenavOpen(true)} />
+      <Header onMenuClick={() => setSidenavOpen(true)} isMenuOpen={sidenavOpen} />
       <Sidenav isOpen={sidenavOpen} onClose={() => setSidenavOpen(false)} />
       <main id="main-content" className="flex-1 px-4 py-8 md:px-6 lg:px-8">
         {page === 'blogs' ? <Home /> : <Portfolio />}

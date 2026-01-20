@@ -10,7 +10,7 @@ export function Portfolio() {
     error
   } = useProfile(userId);
   if (isLoading) {
-    return <div className="max-w-7xl mx-auto text-center py-10" aria-live="polite">
+    return <div className="max-w-7xl mx-auto text-center py-10" role="status" aria-live="polite">
         <p className="text-gray-500">Loading profile information...</p>
       </div>;
   }
@@ -22,7 +22,7 @@ export function Portfolio() {
       </div>;
   }
   if (!profile) {
-    return <div className="max-w-7xl mx-auto text-center py-10" aria-live="polite">
+    return <div className="max-w-7xl mx-auto text-center py-10" role="status" aria-live="polite">
         <p className="text-gray-500">Profile information not available.</p>
       </div>;
   }
@@ -47,15 +47,15 @@ export function Portfolio() {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               {profile.name}
-            </h2>
+            </h1>
             <p className="text-lg text-gray-600 mb-4">{profile.title}</p>
             <dl className="flex flex-col space-y-2 mb-4">
               <div className="flex items-center text-gray-600">
                 <dt className="sr-only">Date of Birth</dt>
                 <Calendar className="h-5 w-5 mr-2" aria-hidden="true" />
-                <dd>Born: {profile.birthDate ? formatDate(new Date(profile.birthDate)) : ''}</dd>
+                <dd>{profile.birthDate ? formatDate(new Date(profile.birthDate)) : ''}</dd>
               </div>
               <div className="flex items-center text-gray-600">
                 <dt className="sr-only">Email</dt>
@@ -76,7 +76,7 @@ export function Portfolio() {
                 <LinkedinIcon className="h-5 w-5 mr-2" aria-hidden="true" />
                 <dd>
                   <a href="https://www.linkedin.com/in/viktorvansteenweghen/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
-                    LinkedIn
+                    LinkedIn Profile
                   </a>
                 </dd>
               </div>
@@ -85,15 +85,15 @@ export function Portfolio() {
                 <MicIcon className="h-5 w-5 mr-2" aria-hidden="true" />
                 <dd>
                   <a href="https://jcast.dev/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
-                    JCast
+                    JCast Podcast
                   </a>
                 </dd>
               </div>
             </dl>
             <div className="border-t pt-4 mt-4">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">
                 About Me
-              </h3>
+              </h2>
               <p className="text-gray-700">{profile.about}</p>
             </div>
           </div>
