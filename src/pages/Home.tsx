@@ -1,6 +1,7 @@
 import { BlogPostCard } from '../components/BlogPostCard';
 import { useBlogPosts } from '../hooks/useBlogPosts';
 import { SEO } from '../components/SEO';
+import { Sparkles, TrendingUp } from 'lucide-react';
 export function Home() {
   const {
     posts,
@@ -40,15 +41,36 @@ export function Home() {
         ogType="website"
         structuredData={structuredData}
       />
-      <div className="max-w-7xl mx-auto">
-      <section aria-labelledby="latest-posts-heading">
-        <div className="mb-8">
-          <h2 id="latest-posts-heading" className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-            Latest Posts
-          </h2>
-          <p className="text-muted-foreground mt-2">
-            Discover the latest articles and insights
+      {/* Hero Section */}
+      <div className="relative overflow-hidden mb-12">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-blue-500/20 to-cyan-500/20 blur-3xl opacity-50 animate-pulse" />
+        <div className="relative max-w-4xl mx-auto text-center py-16 px-4">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 animate-bounce">
+            <Sparkles className="h-4 w-4" />
+            <span>Fresh Content Weekly</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent leading-tight">
+            Discover Amazing Stories
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Dive into a world of cutting-edge web development, software engineering insights, and technology trends that shape the future.
           </p>
+          <div className="flex items-center justify-center gap-2 mt-8 text-sm text-muted-foreground">
+            <TrendingUp className="h-4 w-4 text-primary" />
+            <span className="font-medium">{posts.length} articles and counting</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        <section aria-labelledby="latest-posts-heading">
+        <div className="mb-10 flex items-end justify-between">
+          <div>
+            <h2 id="latest-posts-heading" className="text-3xl md:text-4xl font-black mb-2 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              Latest Posts
+            </h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full" />
+          </div>
         </div>
         {isLoading && <div className="text-center py-10" aria-live="polite">
             <p className="text-muted-foreground">Loading posts...</p>

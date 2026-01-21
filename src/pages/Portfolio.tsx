@@ -72,21 +72,23 @@ export function Portfolio() {
       />
       <div className="max-w-7xl mx-auto">
       {/* Header/Personal Info Section */}
-      <section aria-labelledby="personal-info-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 id="personal-info-heading" className="text-2xl font-bold text-gray-900 mb-4 sr-only">
+      <section aria-labelledby="personal-info-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl" />
+        <h2 id="personal-info-heading" className="text-2xl font-bold mb-4 sr-only">
           Personal Information
         </h2>
-        <div className="flex flex-col md:flex-row md:gap-8">
+        <div className="flex flex-col md:flex-row md:gap-8 relative z-10">
           <div className="flex justify-center md:justify-start shrink-0">
-            <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0">
+            <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 ring-4 ring-primary/20 shadow-xl transform hover:scale-105 transition-transform duration-300">
               <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} className="w-full h-full object-cover object-center" />
             </div>
           </div>
           <div className="flex-1">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-4xl font-black mb-2 bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent">
               {profile.name}
             </h1>
-            <p className="text-lg text-gray-600 mb-4">{profile.title}</p>
+            <p className="text-xl text-muted-foreground mb-6 font-medium">{profile.title}</p>
             <dl className="flex flex-col space-y-2 mb-4">
               <div className="flex items-center text-gray-600">
                 <dt className="sr-only">Date of Birth</dt>
@@ -137,10 +139,11 @@ export function Portfolio() {
       </section>
 
       {/* Employment Section */}
-      <section aria-labelledby="employment-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 id="employment-heading" className="text-2xl font-bold text-gray-900 mb-4">
+      <section aria-labelledby="employment-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+        <h2 id="employment-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Employment History
         </h2>
+        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
         <div className="space-y-6">
           {workExperience.map(job => <article key={job.id} className="border-b pb-4">
               <header>
@@ -170,10 +173,11 @@ export function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section aria-labelledby="skills-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 id="skills-heading" className="text-2xl font-bold text-gray-900 mb-4">
+      <section aria-labelledby="skills-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+        <h2 id="skills-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Technical Skills
         </h2>
+        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">
@@ -219,10 +223,11 @@ export function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section aria-labelledby="projects-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 id="projects-heading" className="text-2xl font-bold text-gray-900 mb-4">
+      <section aria-labelledby="projects-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+        <h2 id="projects-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Notable Projects
         </h2>
+        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map(project => <article key={project.id} className="border rounded-lg overflow-hidden">
               <div className="h-48 bg-gray-200">
@@ -248,10 +253,11 @@ export function Portfolio() {
       </section>
 
       {/* Certificates Section */}
-      <section aria-labelledby="certificates-heading" className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 id="certificates-heading" className="text-2xl font-bold text-gray-900 mb-4">
+      <section aria-labelledby="certificates-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+        <h2 id="certificates-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Certificates
         </h2>
+        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
         <dl className="space-y-4">
           {certificates.map(cert => <div key={cert.id} className="flex flex-col md:flex-row border-b pb-4">
               <dt className="md:w-1/4 mb-2 md:mb-0 text-gray-600">
