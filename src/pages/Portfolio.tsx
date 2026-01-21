@@ -81,7 +81,7 @@ export function Portfolio() {
         <div className="flex flex-col md:flex-row md:gap-8 relative z-10">
           <div className="flex justify-center md:justify-start shrink-0">
             <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 ring-4 ring-primary/20 shadow-xl transform hover:scale-105 transition-transform duration-300">
-              <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} className="w-full h-full object-cover object-center" />
+              <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} fetchPriority="high" className="w-full h-full object-cover object-center" />
             </div>
           </div>
           <div className="flex-1">
