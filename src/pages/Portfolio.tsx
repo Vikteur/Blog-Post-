@@ -72,7 +72,7 @@ export function Portfolio() {
       />
       <div className="max-w-7xl mx-auto">
       {/* Header/Personal Info Section */}
-      <section aria-labelledby="personal-info-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-primary/10 relative overflow-hidden">
+      <section aria-labelledby="personal-info-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-2xl shadow-primary/10 p-8 mb-8 border-2 border-primary/10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl" />
         <h2 id="personal-info-heading" className="text-2xl font-bold mb-4 sr-only">
@@ -139,7 +139,7 @@ export function Portfolio() {
       </section>
 
       {/* Employment Section */}
-      <section aria-labelledby="employment-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+      <section aria-labelledby="employment-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
         <h2 id="employment-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Employment History
         </h2>
@@ -173,7 +173,7 @@ export function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section aria-labelledby="skills-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+      <section aria-labelledby="skills-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
         <h2 id="skills-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Technical Skills
         </h2>
@@ -223,7 +223,7 @@ export function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section aria-labelledby="projects-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+      <section aria-labelledby="projects-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
         <h2 id="projects-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Notable Projects
         </h2>
@@ -253,7 +253,7 @@ export function Portfolio() {
       </section>
 
       {/* Certificates Section */}
-      <section aria-labelledby="certificates-heading" className="bg-gradient-to-br from-card to-card/80 rounded-2xl shadow-xl p-8 mb-8 border border-primary/10">
+      <section aria-labelledby="certificates-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
         <h2 id="certificates-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
           Certificates
         </h2>

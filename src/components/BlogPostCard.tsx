@@ -17,7 +17,7 @@ export function BlogPostCard({
   const handleReadMore = () => {
     navigate(`/post/${post.id}`);
   };
-  return <Card className="group overflow-hidden hover:shadow-2xl hover:scale-[1.03] transition-all duration-500 border-2 hover:border-primary/50 bg-gradient-to-br from-card to-card/50 h-full flex flex-col">
+  return <Card className="group overflow-hidden hover:shadow-2xl hover:shadow-primary/20 hover:scale-[1.03] transition-all duration-500 border-2 hover:border-primary/50 bg-gradient-to-br from-card/80 to-card/50 backdrop-blur-sm h-full flex flex-col">
       {post.image && <div className="h-56 overflow-hidden relative">
           <img 
             src={post.image} 
@@ -59,7 +59,7 @@ export function BlogPostCard({
           onClick={handleReadMore} 
           variant="ghost" 
           size="sm" 
-          className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 font-semibold group/btn" 
+          className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-300 font-semibold group/btn" 
           aria-label={`Read more about ${post.title}`}
         >
           <span>Read Article</span>

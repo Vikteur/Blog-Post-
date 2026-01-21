@@ -72,8 +72,16 @@ export function Home() {
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full" />
           </div>
         </div>
-        {isLoading && <div className="text-center py-10" aria-live="polite">
-            <p className="text-muted-foreground">Loading posts...</p>
+        {isLoading && <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite" aria-label="Loading posts">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="rounded-2xl border-2 border-border/50 bg-card/50 backdrop-blur-sm p-6 animate-pulse">
+                <div className="h-56 bg-muted rounded-lg mb-4" />
+                <div className="h-4 bg-muted rounded w-1/4 mb-3" />
+                <div className="h-6 bg-muted rounded w-3/4 mb-3" />
+                <div className="h-4 bg-muted rounded w-full mb-2" />
+                <div className="h-4 bg-muted rounded w-5/6" />
+              </div>
+            ))}
           </div>}
         {error && <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-3 rounded-lg mb-6" role="alert" aria-live="assertive">
             <p>{error}</p>

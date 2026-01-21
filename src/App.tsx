@@ -4,6 +4,7 @@ import { Sidenav } from './components/Sidenav';
 import { Home } from './pages/Home';
 import { Portfolio } from './pages/Portfolio';
 import { SkipToContent } from './components/SkipToContent';
+import { Footer } from './components/Footer';
 interface AppProps {
   page?: string;
 }
@@ -25,6 +26,7 @@ export function App({
         <main id="main-content" className="flex-1 px-4 py-8 md:px-6 lg:px-8">
           {page === 'blogs' ? <Home /> : <Portfolio />}
         </main>
+        <Footer />
       </div>
     </div>;
 }
