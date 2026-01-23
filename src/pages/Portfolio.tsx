@@ -38,26 +38,61 @@ export function Portfolio() {
   
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": profile.name,
-    "jobTitle": profile.title,
-    "email": profile.email,
-    "url": "https://viktorvansteenweghen.com/",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": profile.location
-    },
-    "image": profile.avatar,
-    "description": profile.about,
-    "sameAs": [
-      "https://www.linkedin.com/in/viktorvansteenweghen/",
-      "https://jcast.dev/"
-    ],
-    "alumniOf": certificates.map(cert => ({
-      "@type": "EducationalOrganization",
-      "name": cert.issuer
-    })),
-    "knowsAbout": skills.map(skill => skill.name)
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://viktorvansteenweghen.com/#person",
+        "name": profile.name,
+        "jobTitle": profile.title,
+        "email": profile.email,
+        "url": "https://viktorvansteenweghen.com/",
+        "image": {
+          "@type": "ImageObject",
+          "url": profile.avatar
+        },
+        "description": profile.about,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": profile.location
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/viktorvansteenweghen/",
+          "https://jcast.dev/"
+        ],
+        "alumniOf": certificates.map(cert => ({
+          "@type": "EducationalOrganization",
+          "name": cert.issuer
+        })),
+        "knowsAbout": skills.map(skill => skill.name)
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://viktorvansteenweghen.com/#website",
+        "url": "https://viktorvansteenweghen.com/",
+        "name": "Viktor Van Steenweghen",
+        "description": "Portfolio and blog of Viktor Van Steenweghen, Full Stack Developer",
+        "publisher": {
+          "@id": "https://viktorvansteenweghen.com/#person"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://viktorvansteenweghen.com/#webpage",
+        "url": "https://viktorvansteenweghen.com/",
+        "name": "Portfolio",
+        "isPartOf": {
+          "@id": "https://viktorvansteenweghen.com/#website"
+        },
+        "about": {
+          "@id": "https://viktorvansteenweghen.com/#person"
+        },
+        "mainEntity": {
+          "@id": "https://viktorvansteenweghen.com/#person"
+        },
+        "inLanguage": "en-US"
+      }
+    ]
   };
   
   return (
@@ -72,149 +107,156 @@ export function Portfolio() {
       />
       <div className="max-w-7xl mx-auto">
       {/* Header/Personal Info Section */}
-      <section aria-labelledby="personal-info-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-2xl shadow-primary/10 p-8 mb-8 border-2 border-primary/10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl" />
+      <section aria-labelledby="personal-info-heading" className="section-card mb-16">
         <h2 id="personal-info-heading" className="text-2xl font-bold mb-4 sr-only">
           Personal Information
         </h2>
-        <div className="flex flex-col md:flex-row md:gap-8 relative z-10">
+        <div className="flex flex-col md:flex-row md:gap-10 relative z-10">
           <div className="flex justify-center md:justify-start shrink-0">
-            <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 ring-4 ring-primary/20 shadow-xl transform hover:scale-105 transition-transform duration-300">
-              <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} fetchPriority="high" className="w-full h-full object-cover object-center" />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+              <div className="relative w-44 h-44 rounded-full overflow-hidden mb-6 md:mb-0 ring-2 ring-border/50 shadow-elevated">
+                <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} fetchPriority="high" className="w-full h-full object-cover object-center" />
+              </div>
             </div>
           </div>
           <div className="flex-1">
-            <h1 className="text-4xl font-black mb-2 bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-gradient-subtle tracking-tight">
               {profile.name}
             </h1>
-            <p className="text-xl text-muted-foreground mb-6 font-medium">{profile.title}</p>
-            <dl className="flex flex-col space-y-2 mb-4">
-              <div className="flex items-center text-gray-600">
+            <p className="text-lg text-primary font-medium mb-6">{profile.title}</p>
+            <dl className="flex flex-col space-y-3 mb-6">
+              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
                 <dt className="sr-only">Date of Birth</dt>
-                <Calendar className="h-5 w-5 mr-2" aria-hidden="true" />
-                <dd>{profile.birthDate ? formatDate(new Date(profile.birthDate)) : ''}</dd>
+                <Calendar className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
+                <dd className="text-sm">{profile.birthDate ? formatDate(new Date(profile.birthDate)) : ''}</dd>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
                 <dt className="sr-only">Email</dt>
-                <Mail className="h-5 w-5 mr-2" aria-hidden="true" />
+                <Mail className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
                 <dd>
-                  <a href={`mailto:${profile.email}`} className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
+                  <a href={`mailto:${profile.email}`} className="text-sm hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">
                     {profile.email}
                   </a>
                 </dd>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
                 <dt className="sr-only">Location</dt>
-                <MapPin className="h-5 w-5 mr-2" aria-hidden="true" />
-                <dd>{profile.location}</dd>
+                <MapPin className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
+                <dd className="text-sm">{profile.location}</dd>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
                 <dt className="sr-only">LinkedIn</dt>
-                <LinkedinIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+                <LinkedinIcon className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
                 <dd>
-                  <a href="https://www.linkedin.com/in/viktorvansteenweghen/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
+                  <a href="https://www.linkedin.com/in/viktorvansteenweghen/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">
                     LinkedIn Profile
                   </a>
                 </dd>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
                 <dt className="sr-only">Podcast</dt>
-                <MicIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+                <MicIcon className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
                 <dd>
-                  <a href="https://jcast.dev/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm">
+                  <a href="https://jcast.dev/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">
                     JCast Podcast
                   </a>
                 </dd>
               </div>
             </dl>
-            <div className="border-t pt-4 mt-4">
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            <div className="border-t border-border/50 pt-5 mt-5">
+              <h2 className="text-lg font-semibold text-foreground mb-3 tracking-tight">
                 About Me
               </h2>
-              <p className="text-gray-700">{profile.about}</p>
+              <p className="text-muted-foreground leading-relaxed">{profile.about}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Employment Section */}
-      <section aria-labelledby="employment-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
-        <h2 id="employment-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-          Employment History
-        </h2>
-        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
-        <div className="space-y-6">
-          {workExperience.map(job => <article key={job.id} className="border-b pb-4">
-              <header>
-                <div className="flex flex-col md:flex-row justify-between mb-2">
-                  <h3 className="text-xl font-semibold text-gray-900">
+      <section aria-labelledby="employment-heading" className="section-card mb-16">
+        <div className="flex items-center gap-4 mb-8">
+          <h2 id="employment-heading" className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+            Employment History
+          </h2>
+          <div className="accent-line" />
+        </div>
+        <div className="space-y-8">
+          {workExperience.map((job, index) => <article key={job.id} className="relative pl-6 border-l-2 border-primary/20 hover:border-primary/50 transition-colors duration-300">
+              <div className="absolute left-0 top-1 w-3 h-3 -translate-x-[7px] rounded-full bg-primary/80 ring-4 ring-background" />
+              <header className="mb-3">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-4 mb-2">
+                  <h3 className="text-lg font-semibold text-foreground tracking-tight">
                     {job.title}
                   </h3>
-                  <span className="text-gray-600">
+                  <span className="text-sm text-muted-foreground font-medium">
                     <time dateTime={new Date(job.startDate).toISOString().split('T')[0]}>
                       {formatDate(new Date(job.startDate))}
                     </time>
                     {' - '}
                     {job.endDate ? <time dateTime={new Date(job.endDate).toISOString().split('T')[0]}>
                       {formatDate(new Date(job.endDate))}
-                    </time> : 'Present'}
+                    </time> : <span className="text-primary font-semibold">Present</span>}
                   </span>
                 </div>
                 {job.companyUrl ? (
-                  <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="text-lg text-blue-700 hover:text-blue-900 hover:underline mb-2 inline-block">{job.company}</a>
+                  <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-medium transition-colors duration-200 inline-flex items-center gap-1">
+                    {job.company}
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
                 ) : (
-                  <h4 className="text-lg text-blue-700 mb-2">{job.company}</h4>
+                  <h4 className="text-primary font-medium">{job.company}</h4>
                 )}
               </header>
-              <p className="text-gray-700">{job.description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{job.description}</p>
             </article>)}
         </div>
       </section>
 
       {/* Skills Section */}
-      <section aria-labelledby="skills-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
-        <h2 id="skills-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-          Technical Skills
-        </h2>
-        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section aria-labelledby="skills-heading" className="section-card mb-16">
+        <div className="flex items-center gap-4 mb-8">
+          <h2 id="skills-heading" className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+            Technical Skills
+          </h2>
+          <div className="accent-line" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <h3 className="text-base font-semibold text-foreground mb-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary" />
               Programming Languages
             </h3>
-            <div className="space-y-3">
-              {programmingLanguages.map(skill => <div key={skill.name}>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-700" id={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+            <div className="space-y-5">
+              {programmingLanguages.map(skill => <div key={skill.name} className="group">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm font-medium text-foreground" id={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
                       {skill.name}
                     </span>
-                    <span className="text-gray-700">{skill.level}%</span>
+                    <span className="text-xs text-muted-foreground font-medium">{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-labelledby={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <div className="bg-blue-700 h-2 rounded-full" style={{
-                  width: `${skill.level}%`
-                }}></div>
+                  <div className="skill-bar" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-labelledby={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <div className="skill-bar-fill" style={{ width: `${skill.level}%` }}></div>
                   </div>
                 </div>)}
             </div>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Frameworks & toolss
+            <h3 className="text-base font-semibold text-foreground mb-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-accent" />
+              Frameworks and Tools
             </h3>
-            <div className="space-y-3">
-              {frameworksAndtoolss.map(skill => <div key={skill.name}>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-700" id={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+            <div className="space-y-5">
+              {frameworksAndtoolss.map(skill => <div key={skill.name} className="group">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm font-medium text-foreground" id={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
                       {skill.name}
                     </span>
-                    <span className="text-gray-700">{skill.level}%</span>
+                    <span className="text-xs text-muted-foreground font-medium">{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-labelledby={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <div className="bg-green-700 h-2 rounded-full" style={{
-                  width: `${skill.level}%`
-                }}></div>
+                  <div className="skill-bar" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-labelledby={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <div className="skill-bar-fill-alt" style={{ width: `${skill.level}%` }}></div>
                   </div>
                 </div>)}
             </div>
@@ -223,29 +265,31 @@ export function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section aria-labelledby="projects-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
-        <h2 id="projects-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-          Notable Projects
-        </h2>
-        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
+      <section aria-labelledby="projects-heading" className="section-card mb-16">
+        <div className="flex items-center gap-4 mb-8">
+          <h2 id="projects-heading" className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+            Notable Projects
+          </h2>
+          <div className="accent-line" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map(project => <article key={project.id} className="border rounded-lg overflow-hidden">
-              <div className="h-48 bg-gray-200">
-                {project.image && <img src={project.image} alt={`Screenshot of ${project.title} project`} width={640} height={384} className="w-full h-full object-cover" />}
+          {projects.map(project => <article key={project.id} className="group bg-background/50 rounded-xl overflow-hidden border border-border/50 hover:border-primary/30 hover:shadow-elevated transition-all duration-300">
+              <div className="h-44 bg-muted overflow-hidden">
+                {project.image && <img src={project.image} alt={`Screenshot of ${project.title} project`} width={640} height={384} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />}
               </div>
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-200 tracking-tight">
                   {project.title}
                 </h3>
-                <p className="text-gray-700 mb-3">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-3" aria-label="Technologies used">
-                  {project.technologies.map(tech => <span key={tech} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2">{project.description}</p>
+                <div className="flex flex-wrap gap-1.5 mb-4" aria-label="Technologies used">
+                  {project.technologies.map(tech => <span key={tech} className="tag text-[10px]">
                       {tech}
                     </span>)}
                 </div>
-                {project.url && <a href={project.url} className="flex items-center text-blue-700 hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm" aria-label={`View ${project.title} project (opens in a new window)`} target="_blank" rel="noopener noreferrer">
-                    <span className="mr-1">View Project</span>
-                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                {project.url && <a href={project.url} className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm group/link" aria-label={`View ${project.title} project (opens in a new window)`} target="_blank" rel="noopener noreferrer">
+                    <span>View Project</span>
+                    <ExternalLink className="h-3.5 w-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-200" aria-hidden="true" />
                   </a>}
               </div>
             </article>)}
@@ -253,27 +297,29 @@ export function Portfolio() {
       </section>
 
       {/* Certificates Section */}
-      <section aria-labelledby="certificates-heading" className="bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md rounded-2xl shadow-xl shadow-primary/5 p-8 mb-8 border border-primary/10">
-        <h2 id="certificates-heading" className="text-3xl font-black mb-6 bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-          Certificates
-        </h2>
-        <div className="h-1 w-20 bg-gradient-to-r from-primary to-blue-600 rounded-full mb-6" />
-        <dl className="space-y-4">
-          {certificates.map(cert => <div key={cert.id} className="flex flex-col md:flex-row border-b pb-4">
-              <dt className="md:w-1/4 mb-2 md:mb-0 text-gray-600">
+      <section aria-labelledby="certificates-heading" className="section-card mb-16">
+        <div className="flex items-center gap-4 mb-8">
+          <h2 id="certificates-heading" className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+            Certificates
+          </h2>
+          <div className="accent-line" />
+        </div>
+        <dl className="space-y-5">
+          {certificates.map((cert, index) => <div key={cert.id} className="flex flex-col md:flex-row gap-4 p-4 rounded-lg bg-background/50 border border-border/30 hover:border-primary/30 hover:bg-background/80 transition-all duration-200">
+              <dt className="md:w-1/5 shrink-0">
                 {cert.date && !isNaN(Date.parse(cert.date)) ? (
-                  <time dateTime={new Date(cert.date).toISOString().split('T')[0]}>
+                  <time dateTime={new Date(cert.date).toISOString().split('T')[0]} className="text-sm font-medium text-primary">
                     {formatDate(new Date(cert.date))}
                   </time>
                 ) : (
-                  <span>Invalid date</span>
+                  <span className="text-sm text-muted-foreground">No date</span>
                 )}
               </dt>
-              <dd className="md:w-3/4">
-                <h3 className="text-lg font-semibold text-gray-900">
+              <dd className="md:w-4/5">
+                <h3 className="text-base font-semibold text-foreground mb-1 tracking-tight">
                   {cert.title}
                 </h3>
-                <p className="text-gray-700">{cert.issuer}</p>
+                <p className="text-sm text-muted-foreground">{cert.issuer}</p>
               </dd>
             </div>)}
         </dl>
