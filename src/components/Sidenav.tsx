@@ -64,35 +64,38 @@ export function Sidenav({
 
   return <>
       {/* Backdrop */}
-      <div className="fixed inset-0 z-20 bg-black/50 backdrop-blur-sm transition-opacity lg:hidden" aria-hidden="true" onClick={onClose} />
+      <div className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm transition-opacity lg:hidden" aria-hidden="true" onClick={onClose} />
       {/* Sidenav */}
-      <div ref={sidenavRef} id="site-navigation" role="dialog" aria-modal="true" aria-label="Site navigation" className="fixed top-0 left-0 z-30 h-full w-72 bg-card shadow-2xl lg:hidden">
-        <div className="flex justify-between items-center p-6 border-b">
-          <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Daily Blog</h2>
-          <Button 
-            onClick={onClose} 
-            variant="ghost" 
+      <div ref={sidenavRef} id="site-navigation" role="dialog" aria-modal="true" aria-label="Site navigation" className="fixed top-0 left-0 z-50 h-full w-72 bg-card/95 backdrop-blur-lg shadow-elevated border-r border-border/50 lg:hidden">
+        <div className="flex justify-between items-center p-5 border-b border-border/50">
+          <h2 className="text-base font-semibold text-foreground tracking-tight">Viktor Van Steenweghen</h2>
+          <Button
+            onClick={onClose}
+            variant="ghost"
             size="icon"
+            className="h-9 w-9 hover:bg-muted/60"
             aria-label="Close navigation menu"
           >
-            <XIcon className="h-6 w-6" aria-hidden="true" />
+            <XIcon className="h-5 w-5" aria-hidden="true" />
           </Button>
         </div>
         <nav className="p-4" aria-label="Main navigation">
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             <li>
               <Button
                 asChild
                 variant="ghost"
                 className={cn(
-                  "w-full justify-start gap-3 h-12",
-                  isActive('/') && "bg-primary/10 text-primary hover:bg-primary/20"
+                  "w-full justify-start gap-3 h-11 font-medium",
+                  isActive('/')
+                    ? "bg-primary/10 text-primary hover:bg-primary/15"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 )}
                 onClick={onClose}
               >
                 <Link to="/">
-                  <HomeIcon className="h-5 w-5" aria-hidden="true" />
-                  <span>Home</span>
+                  <HomeIcon className="h-4 w-4" aria-hidden="true" />
+                  <span>Portfolio</span>
                 </Link>
               </Button>
             </li>
@@ -101,21 +104,23 @@ export function Sidenav({
                 asChild
                 variant="ghost"
                 className={cn(
-                  "w-full justify-start gap-3 h-12",
-                  isActive('/blogs') && "bg-primary/10 text-primary hover:bg-primary/20"
+                  "w-full justify-start gap-3 h-11 font-medium",
+                  isActive('/blogs')
+                    ? "bg-primary/10 text-primary hover:bg-primary/15"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 )}
                 onClick={onClose}
               >
                 <Link to="/blogs">
-                  <BookOpenIcon className="h-5 w-5" aria-hidden="true" />
-                  <span>Blogs</span>
+                  <BookOpenIcon className="h-4 w-4" aria-hidden="true" />
+                  <span>Blog</span>
                 </Link>
               </Button>
             </li>
           </ul>
         </nav>
-        <div className="absolute bottom-0 left-0 right-0 p-6 border-t">
-          <p className="text-sm text-muted-foreground">© 2026 Viktor Van Steenweghen</p>
+        <div className="absolute bottom-0 left-0 right-0 p-5 border-t border-border/50">
+          <p className="text-xs text-muted-foreground">{new Date().getFullYear()} Viktor Van Steenweghen</p>
         </div>
       </div>
     </>;

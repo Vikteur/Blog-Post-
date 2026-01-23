@@ -46,7 +46,11 @@
       "Bash(ren:*)",
       "Bash(del edezwe.webp)",
       "Bash(del mijngezondheid.webp)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npx vite build)",
+      "Bash(npx tsc:*)",
+      "Bash(NODE_ENV=production npx vite:*)",
+      "Bash(echo:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
