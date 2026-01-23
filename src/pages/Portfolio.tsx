@@ -41,7 +41,7 @@ export function Portfolio() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://viktorvansteenweghen.com/#person",
+        "@id": "https://viktorvansteenweghen.com/#viktor",
         "name": profile.name,
         "jobTitle": profile.title,
         "email": profile.email,
@@ -72,7 +72,7 @@ export function Portfolio() {
         "name": "Viktor Van Steenweghen",
         "description": "Portfolio and blog of Viktor Van Steenweghen, Full Stack Developer",
         "publisher": {
-          "@id": "https://viktorvansteenweghen.com/#person"
+          "@id": "https://viktorvansteenweghen.com/#viktor"
         },
         "inLanguage": "en-US"
       },
@@ -85,10 +85,10 @@ export function Portfolio() {
           "@id": "https://viktorvansteenweghen.com/#website"
         },
         "about": {
-          "@id": "https://viktorvansteenweghen.com/#person"
+          "@id": "https://viktorvansteenweghen.com/#viktor"
         },
         "mainEntity": {
-          "@id": "https://viktorvansteenweghen.com/#person"
+          "@id": "https://viktorvansteenweghen.com/#viktor"
         },
         "inLanguage": "en-US"
       }

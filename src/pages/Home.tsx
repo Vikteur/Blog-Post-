@@ -14,7 +14,7 @@ export function Home() {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://viktorvansteenweghen.com/#person",
+        "@id": "https://viktorvansteenweghen.com/#viktor",
         "name": "Viktor Van Steenweghen",
         "url": "https://viktorvansteenweghen.com/",
         "sameAs": [
@@ -29,7 +29,7 @@ export function Home() {
         "name": "Viktor Van Steenweghen",
         "description": "Portfolio and blog of Viktor Van Steenweghen, Full Stack Developer",
         "publisher": {
-          "@id": "https://viktorvansteenweghen.com/#person"
+          "@id": "https://viktorvansteenweghen.com/#viktor"
         },
         "inLanguage": "en-US"
       },
@@ -43,7 +43,7 @@ export function Home() {
           "@id": "https://viktorvansteenweghen.com/#website"
         },
         "publisher": {
-          "@id": "https://viktorvansteenweghen.com/#person"
+          "@id": "https://viktorvansteenweghen.com/#viktor"
         },
         "inLanguage": "en-US",
         "blogPost": posts.map(post => ({
@@ -52,7 +52,7 @@ export function Home() {
           "headline": post.title,
           "datePublished": new Date(post.date).toISOString(),
           "author": {
-            "@id": "https://viktorvansteenweghen.com/#person"
+            "@id": "https://viktorvansteenweghen.com/#viktor"
           },
           "url": `https://viktorvansteenweghen.com/post/${post.id}`
         }))
