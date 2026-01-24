@@ -27,8 +27,7 @@ export function BlogPostDetail() {
         "name": "Viktor Van Steenweghen",
         "url": "https://viktorvansteenweghen.com/",
         "sameAs": [
-          "https://www.linkedin.com/in/viktorvansteenweghen/",
-          "https://jcast.dev/"
+          "https://www.linkedin.com/in/viktorvansteenweghen/"
         ]
       },
       {

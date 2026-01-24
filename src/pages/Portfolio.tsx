@@ -56,8 +56,7 @@ export function Portfolio() {
           "addressLocality": profile.location
         },
         "sameAs": [
-          "https://www.linkedin.com/in/viktorvansteenweghen/",
-          "https://jcast.dev/"
+          "https://www.linkedin.com/in/viktorvansteenweghen/"
         ],
         "alumniOf": certificates.map(cert => ({
           "@type": "EducationalOrganization",
