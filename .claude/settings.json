@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vite *)",
+      "Bash(npx tsc *)"
+    ],
+    "deny": [
+      "Read(.env*)"
+    ]
+  }
+}
