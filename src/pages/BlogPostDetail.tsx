@@ -6,6 +6,9 @@ import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Separator } from '../components/ui/separator';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 export function BlogPostDetail() {
   const {
     postId
@@ -160,10 +163,10 @@ export function BlogPostDetail() {
             </div>
           </header>
           <Separator className="bg-border/50 my-8" />
-          <section className="prose prose-lg max-w-none">
-            <div className="text-foreground/90 whitespace-pre-line leading-relaxed text-base">
+          <section className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-strong:text-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary/50 prose-code:text-primary prose-pre:bg-muted prose-pre:text-foreground prose-a:text-primary prose-li:text-foreground/90 prose-hr:border-border/50 prose-hr:my-6 prose-h2:mt-8 prose-h2:mb-4 prose-h3:mt-6 prose-h3:mb-3">
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
               {post.content}
-            </div>
+            </ReactMarkdown>
           </section>
         </article>}
     </div>;

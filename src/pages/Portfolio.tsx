@@ -113,7 +113,6 @@ export function Portfolio() {
         <div className="flex flex-col md:flex-row md:gap-10 relative z-10">
           <div className="flex justify-center md:justify-start shrink-0">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
               <div className="relative w-44 h-44 rounded-full overflow-hidden mb-6 md:mb-0 ring-2 ring-border/50 shadow-elevated">
                 <img src={profile.avatar} alt={`${profile.name}`} width={384} height={384} fetchPriority="high" className="w-full h-full object-cover object-center" />
               </div>
@@ -125,21 +124,17 @@ export function Portfolio() {
             </h1>
             <p className="text-lg text-primary font-medium mb-6">{profile.title}</p>
             <dl className="flex flex-col space-y-3 mb-6">
-              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <div className="flex items-center text-muted-foreground">
                 <dt className="sr-only">Date of Birth</dt>
                 <Calendar className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
                 <dd className="text-sm">{profile.birthDate ? formatDate(new Date(profile.birthDate)) : ''}</dd>
               </div>
-              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <div className="flex items-center text-muted-foreground">
                 <dt className="sr-only">Email</dt>
                 <Mail className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
-                <dd>
-                  <a href={`mailto:${profile.email}`} className="text-sm hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm">
-                    {profile.email}
-                  </a>
-                </dd>
+                <dd className="text-sm">{profile.email}</dd>
               </div>
-              <div className="flex items-center text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <div className="flex items-center text-muted-foreground">
                 <dt className="sr-only">Location</dt>
                 <MapPin className="h-4 w-4 mr-3 text-primary/70" aria-hidden="true" />
                 <dd className="text-sm">{profile.location}</dd>
