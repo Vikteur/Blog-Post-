@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Sidenav } from './components/Sidenav';
 import { Home } from './pages/Home';
 import { Portfolio } from './pages/Portfolio';
+import { BlogPostDetail } from './pages/BlogPostDetail';
 import { SkipToContent } from './components/SkipToContent';
 import { Footer } from './components/Footer';
 interface AppProps {
@@ -12,6 +13,13 @@ export function App({
   page = 'home'
 }: AppProps) {
   const [sidenavOpen, setSidenavOpen] = useState(false);
+
+  function renderPage() {
+    if (page === 'blogs') return <Home />;
+    if (page === 'post') return <BlogPostDetail />;
+    return <Portfolio />;
+  }
+
   return <div className="flex flex-col min-h-screen bg-background relative overflow-hidden noise-texture">
       {/* Refined decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -27,7 +35,7 @@ export function App({
         <Header onMenuClick={() => setSidenavOpen(true)} isMenuOpen={sidenavOpen} />
         <Sidenav isOpen={sidenavOpen} onClose={() => setSidenavOpen(false)} />
         <main id="main-content" className="flex-1 px-4 py-12 md:px-6 md:py-16 lg:px-8 lg:py-20">
-          {page === 'blogs' ? <Home /> : <Portfolio />}
+          {renderPage()}
         </main>
         <Footer />
       </div>

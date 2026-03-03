@@ -194,7 +194,7 @@ Developers who invest in learning how to work with AI properly will stay relevan
 
 The goal is not to write less code, it is to write better code, faster. Developers who embrace AI the right way will not be replaced by it. They will outpace everyone who does not.`,
   summary: 'AI won\'t replace developers. Developers who learn to use AI properly will outpace those who don\'t. This article explores why context, structure, and the right tooling make all the difference.',
-  date: '2026-03-02T00:00:00.000Z',
+  date: '2026-03-03T00:00:00.000Z',
   topic: 'AI',
   author: 'Viktor Van Steenweghen',
   authorId: '1',

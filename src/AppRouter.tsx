@@ -9,7 +9,7 @@ export function AppRouter() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/blogs" element={<App page="blogs" />} />
-        <Route path="/post/:postId" element={<BlogPostDetail />} />
+        <Route path="/post/:postId" element={<App page="post" />} />
         <Route path="/portfolio" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
