@@ -223,6 +223,8 @@ The handbook breaks an AI coding assistant into four parts, and once you see the
 - **The agent source code.** Your instruction files, your skills, your project.md. The handbook is blunt about this: these markdown files are code. They get parsed, linked, loaded, and executed. Misformat the frontmatter and things fail silently. Rename a file and functionality quietly breaks.
 - **The client.** Whatever kicks off the session. A terminal command, an IDE action, a webhook, a scheduler.
 
+![The runtime machine: a client triggers the harness, which compiles your agent source code into context for the model](/images/blog/under-the-hood/fig-runtime-machine.svg)
+
 The line that stuck with me: **the harness is the compiler.** Your skills and instructions are the source code; the harness compiles them into the context the model actually receives. Two different harnesses, given the exact same skills, produce two different running programs, because they disagree on where files live, what they're called, and when they load. That's why a setup that works beautifully in one tool behaves strangely in another. It's not the model. You changed compilers.
 
 This turns debugging from a shrug into a checklist. Instead of "why is the AI wrong?" you ask "which of the four parts changed?" And there's one more principle underneath all of it that I keep coming back to:
@@ -282,6 +284,8 @@ We all talk about the "context window" like it's a bucket. Bigger bucket, more r
 
 Something can sit in the window and still be effectively invisible. The model "read" it, but it isn't "seeing" it. And here's the part that genuinely surprised me: **position matters as much as presence.** Research the book cites shows a U-shaped curve. The model attends strongly to the beginning of the context and strongly to the end, and it sags badly in the middle. There's a name for that middle in the book that I love: **the trough. The place where instructions go to die.**
 
+![Attention follows a U-curve across the context window: strong at the head and tail, sagging in the middle trough](/images/blog/under-the-hood/fig-attention-curve.svg)
+
 So a critical rule buried at line 62 of a long instruction file, sitting in the middle of a 35,000-token payload, performs *measurably worse* than the exact same rule placed at the top. Same words. Same everything. Different position, different outcome.
 
 It gets worse over a long session. As you keep talking, pasting errors, dumping tool output, yesterday's carefully-placed rule drifts from the top of the window down into the trough. Nothing changed on disk. Nothing threw an error. The agent just quietly gets dumber. The book calls this **context rot**, and the analogy it uses is a CPU cache: the window is your addressable memory, attention is the L1 cache, and a cache miss here is completely silent. No exception. Just a wrong answer that reads beautifully.
@@ -308,6 +312,8 @@ The framing is that every agentic system is really **two computers glued togethe
 The seam between those two is where you live or die. And the rule is simple enough to put on a sticker:
 
 > The model proposes; the gate disposes.
+
+![The seam: the probabilistic model proposes a change, and a deterministic validation gate disposes by applying the write](/images/blog/under-the-hood/fig-the-seam.svg)
 
 The model should never hold the write capability directly. It emits a *proposal*. A deterministic, schema-validated gate decides whether that proposal actually happens. In the ghost-issue case, the fix is a validation step that confirms the customer exists in the real table before any issue can be created. Cheap. Boring. Would have prevented the whole thing.
 
@@ -346,6 +352,8 @@ That last one is the throughline of the entire section. Manual corrections are t
 ## Five letters that tie it together
 
 The handbook hangs all of this on an acronym, PROSE, and normally I roll my eyes at acronyms, but this one is genuinely just the physics of language models written as five rules:
+
+![PROSE: Progressive Disclosure, Reduced Scope, Orchestrated Composition, Safety Boundaries, Explicit Hierarchy](/images/blog/under-the-hood/fig-prose.svg)
 
 - **P — Progressive Disclosure.** Load context just-in-time, not just-in-case.
 - **R — Reduced Scope.** Size every task to fit comfortably in the context window.
