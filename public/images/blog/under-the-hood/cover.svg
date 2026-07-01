@@ -25,7 +25,7 @@
   <rect width="1200" height="630" fill="url(#glow)"/>
 
   <!-- kicker -->
-  <text x="80" y="150" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="4" fill="#6ea8fe">THE AGENTIC SDLC HANDBOOK &#183; PART III</text>
+  <text x="80" y="150" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="4" fill="#6ea8fe">THE AGENTIC SDLC HANDBOOK</text>
 
   <!-- title -->
   <text x="78" y="272" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="104" font-weight="800" fill="#f8fafc" letter-spacing="-2">Under the</text>
