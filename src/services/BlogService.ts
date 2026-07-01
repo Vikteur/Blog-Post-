@@ -1,7 +1,7 @@
 import { BlogPost } from '../types';
 import { IBlogService } from './interfaces';
 
-const posts: BlogPost[] = [{
+const survivalPost: BlogPost = {
   id: '1',
   title: 'Survival of the Fittest: Embracing AI to Stay Relevant',
   content: `I remember the exact moment I started to feel it. A colleague dropped a link in Slack: "just tried this AI thing, built a REST API in ten minutes." I opened it, read through the code, and felt a knot form in my stomach. Not because the code was good. But because I wasn't sure if anyone would notice that it wasn't.
@@ -199,7 +199,8 @@ The goal is not to write less code, it is to write better code, faster. Develope
   author: 'Viktor Van Steenweghen',
   authorId: '1',
   image: '/images/blog/survival-of-the-fittest/dev_vs_ai.webp'
-}, {
+};
+const underTheHoodPost: BlogPost = {
   id: '2',
   title: 'Under the Hood: What the Agentic SDLC Handbook Taught Me About Actually Working With Agents',
   content: `A few months ago I wrote about handing an AI a project.md and a handful of skills and watching it build a clean little Spring Boot backend. I was pretty pleased with myself. I had a system. I had structure. I felt like I'd figured out how this whole thing works.
@@ -391,7 +392,9 @@ The handbook is free, and Part III is the part that earns the whole thing. If yo
   author: 'Viktor Van Steenweghen',
   authorId: '1',
   image: '/images/blog/under-the-hood/cover.svg'
-}];
+};
+// Newest post first — index 0 renders as the featured card on the blog listing.
+const posts: BlogPost[] = [underTheHoodPost, survivalPost];
 // Implementation of the BlogService
 export class BlogService implements IBlogService {
   private posts: BlogPost[] = [...posts];
