@@ -206,7 +206,7 @@ The goal is not to write less code, it is to write better code, faster. Develope
 
 Then a link landed in my feed: the Agentic SDLC Handbook. I opened it expecting the usual "AI will change everything" fluff. Parts I and II are aimed at leaders and strategists, and they're good, but they're not what stopped me. What stopped me was **Part III: For Practitioners**. That's the part written for people who actually have their hands on the keyboard. The machine-room part.
 
-And reading it was slightly humbling. Everything I did in that last post worked, but I was doing it on instinct. I knew *that* a project.md helped. I didn't understand *why*, or what actually happened under the hood when the agent loaded it. Part III is the "why". It gives names to things I'd been feeling my way around in the dark.
+And it was humbling. Everything in that last post worked, but I'd been running on instinct — I knew *that* a project.md helped, not *why*. Part III is the "why". It names the things I'd been feeling my way around in the dark.
 
 > This isn't a summary of the handbook. It's the handful of ideas that genuinely rewired how I think about working with AI. If any of them land the way they landed for me, go read the real thing.
 
@@ -214,7 +214,7 @@ And reading it was slightly humbling. Everything I did in that last post worked,
 
 ## The harness is the compiler
 
-Here's the first idea that reframed everything for me. When your AI does something dumb, your instinct is to blame the model. "GPT is having a bad day." "Claude got lazy." The handbook says: stop. Most of the time the model isn't the problem. The **harness** is.
+The first idea that reframed everything: when your AI does something dumb, you blame the model. "Claude got lazy." The handbook says stop — most of the time the model isn't the problem. The **harness** is.
 
 The handbook breaks an AI coding assistant into four parts, and once you see them separately you can't unsee them:
 
@@ -227,7 +227,7 @@ The handbook breaks an AI coding assistant into four parts, and once you see the
 
 The line that stuck with me: **the harness is the compiler.** Your skills and instructions are the source code; the harness compiles them into the context the model actually receives. Two different harnesses, given the exact same skills, produce two different running programs, because they disagree on where files live, what they're called, and when they load. That's why a setup that works beautifully in one tool behaves strangely in another. It's not the model. You changed compilers.
 
-This turns debugging from a shrug into a checklist. Instead of "why is the AI wrong?" you ask "which of the four parts changed?" And there's one more principle underneath all of it that I keep coming back to:
+That turns debugging from a shrug into a checklist: not "why is the AI wrong?" but "which of the four parts changed?" And one principle sits under all of it:
 
 > Inference is per-thread; the filesystem is shared.
 
@@ -243,13 +243,13 @@ In my last post I said "a fool with a tool is still a fool". Part III takes that
 - **The reviewer.** You check whether the agent stayed inside the lines, and whether the lines were even in the right place. The dangerous output isn't code that's obviously broken. It's code that's locally sensible and globally wrong.
 - **The escalation handler.** You make the judgment calls the spec couldn't anticipate.
 
-The mental model the handbook gives for the agent itself is perfect, and a little uncomfortable: **an AI agent is that brilliant junior engineer, on their very first day, every single session.** No memory of yesterday. Starts from zero every time. The only difference from a real junior is speed. A human junior violates your conventions slowly, over days, where you can catch it. An agent does it at scale, in minutes.
+The handbook's model for the agent is perfect and a little uncomfortable: **an AI agent is that brilliant junior engineer, on their very first day, every single session.** No memory of yesterday, starting from zero every time. The only difference from a real junior is speed: a human violates your conventions slowly, over days, where you can catch it. An agent does it at scale, in minutes.
 
 Two rules of thumb from this chapter now live rent-free in my head:
 
-**The two-minute test.** Delegate the tasks you could explain to a new teammate in under two minutes with a clear spec. If explaining it properly would take thirty minutes of context, just write it yourself. You'll spend the thirty minutes either way, and typing it is more reliable.
+**The two-minute test.** Delegate what you could explain to a new teammate in under two minutes. If explaining it properly would take thirty minutes of context, just write it yourself — you'll spend the thirty minutes either way.
 
-**The 20-30% rule.** If you find yourself correcting more than a quarter of what the agent produced, the *specification* failed, not the agent. Stop patching the output. Go back and re-decompose the task, or write it by hand. Patching a 90%-right answer over and over is almost always slower than starting clean. The book calls this the "almost done" trap, and I have absolutely lost afternoons to it.
+**The 20-30% rule.** If you're correcting more than a quarter of what the agent produced, the *specification* failed, not the agent. Stop patching; re-decompose or write it by hand. Patching a 90%-right answer over and over is slower than starting clean — the book calls this the "almost done" trap, and I've lost afternoons to it.
 
 **Your most impactful output is no longer code. It's context.** That still feels strange to type. But it's true.
 
@@ -257,15 +257,15 @@ Two rules of thumb from this chapter now live rent-free in my head:
 
 ## Instrument the codebase, don't just prompt it
 
-This is the chapter that connected most directly to what I'd already done with my skills, and then went three levels deeper.
+This chapter connected most directly to what I'd done with my skills — then went three levels deeper.
 
-Every mature codebase holds two kinds of knowledge. There's the explicit kind, visible in the code itself: types, signatures, tests. And there's the implicit kind, the stuff that only lives in your team's heads: which module is secretly deprecated, why auth works the weird way it does, the naming convention nobody wrote down. The handbook's line is brutal and correct:
+Every mature codebase holds two kinds of knowledge. The explicit kind, visible in the code: types, signatures, tests. And the implicit kind that only lives in your team's heads: which module is secretly deprecated, why auth works the weird way it does, the naming convention nobody wrote down. The handbook's line is brutal and correct:
 
 > An agent cannot read this. It will guess, and it will guess wrong.
 
-**Instrumenting** a codebase means dragging that second kind of knowledge out of people's heads and into structured files the agent can actually read. My skills and project.md were a first step. The book lays out a whole typed system of these primitives, each loaded at a different moment: eager instructions scoped to a folder, on-demand skills that only activate when relevant, persistent memory files for decisions, event-driven hooks, and so on.
+**Instrumenting** a codebase means dragging that second kind of knowledge out of heads and into structured files the agent can read. My skills and project.md were a first step. The book lays out a whole typed system of these primitives, each loaded at a different moment — scoped instructions, on-demand skills, persistent memory files, event-driven hooks.
 
-The failure mode it names is the one that scares me most: the **silent semantic failure.** Code that passes every test and every linter, and still quietly violates how your system is supposed to work. There's a great example in the book of an agent that assumed a certain kind of auth token used a special prefix. Reasonable guess. Completely wrong for that codebase. Tests were green. Nothing crashed. It was just wrong, confidently, and a human had to catch it.
+The failure mode it names is the one that scares me most: the **silent semantic failure.** Code that passes every test and linter and still quietly violates how your system is supposed to work. The book's example: an agent assumed an auth token used a special prefix. Reasonable guess, completely wrong for that codebase. Tests green, nothing crashed — just confidently wrong, and a human had to catch it.
 
 A couple of principles I'm now stealing wholesale. **Keep instruction files short**, under 40-50 lines; a 200-line rulebook doesn't help the agent, it drowns the important rules in noise (more on *why* in a second). And **teach how to think, not just what to do**: a rule says "use this helper for warnings", a framework says "every warning must answer: what should the user do next?" The framework survives situations you never anticipated. The rule doesn't.
 
@@ -288,13 +288,13 @@ Something can sit in the window and still be effectively invisible. The model "r
 
 So a critical rule buried at line 62 of a long instruction file, sitting in the middle of a 35,000-token payload, performs *measurably worse* than the exact same rule placed at the top. Same words. Same everything. Different position, different outcome.
 
-It gets worse over a long session. As you keep talking, pasting errors, dumping tool output, yesterday's carefully-placed rule drifts from the top of the window down into the trough. Nothing changed on disk. Nothing threw an error. The agent just quietly gets dumber. The book calls this **context rot**, and the analogy it uses is a CPU cache: the window is your addressable memory, attention is the L1 cache, and a cache miss here is completely silent. No exception. Just a wrong answer that reads beautifully.
+It gets worse over a long session. As you keep talking, pasting errors, dumping tool output, yesterday's carefully-placed rule drifts down into the trough. Nothing changed on disk, nothing threw an error — the agent just quietly gets dumber. The book calls this **context rot**, with a CPU-cache analogy: the window is your addressable memory, attention is the L1 cache, and a cache miss here is completely silent. No exception. Just a wrong answer that reads beautifully.
 
 Once you believe this, three habits fall out of it naturally:
 
-1. **Progressive disclosure.** Don't load everything up front "just in case". Load context just-in-time, only when the task actually needs it. Every byte you don't load is a byte not crowding the attention budget.
-2. **Subagent isolation.** For genuinely separate work, spin up a fresh session with a clean window instead of piling onto the current one. The review phase shouldn't have to pay for the attention pollution from the debugging phase's twelve pasted stack traces.
-3. **Plan-write-then-reload.** For a long task, write the plan to a file early, then re-read it right before the important steps. Re-reading yanks the plan out of the trough and back to the freshly-attended end of the window, exactly when you need it most.
+1. **Progressive disclosure.** Don't load everything "just in case". Load context just-in-time — every byte you don't load is one not crowding the attention budget.
+2. **Subagent isolation.** For genuinely separate work, spin up a fresh session with a clean window. The review phase shouldn't pay for the debugging phase's twelve pasted stack traces.
+3. **Plan-write-then-reload.** For a long task, write the plan to a file early, then re-read it right before the important steps. That yanks it out of the trough and back to the freshly-attended end of the window, exactly when you need it.
 
 A few numbers worth internalising: past about a third full, attention is your prime suspect for weird behaviour. Past two pasted error blobs, reset. Past roughly ten turns, the original task is already slipping out of focus. I used to run marathon sessions and blame the model when they degraded. The model was fine. My window was rotting.
 
@@ -315,9 +315,9 @@ The seam between those two is where you live or die. And the rule is simple enou
 
 ![The seam: the probabilistic model proposes a change, and a deterministic validation gate disposes by applying the write](/images/blog/under-the-hood/fig-the-seam.svg)
 
-The model should never hold the write capability directly. It emits a *proposal*. A deterministic, schema-validated gate decides whether that proposal actually happens. In the ghost-issue case, the fix is a validation step that confirms the customer exists in the real table before any issue can be created. Cheap. Boring. Would have prevented the whole thing.
+The model should never hold the write capability directly. It emits a *proposal*, and a deterministic, schema-validated gate decides whether that proposal actually happens. In the ghost-issue case, the fix is one validation step confirming the customer exists before any issue can be created. Cheap. Boring. Would have prevented the whole thing.
 
-The strongest version of this isn't a polite instruction telling the agent to behave. It's the substrate simply refusing to give the agent write access at all. The agent produces a buffered proposal; a separate, trusted post-stage applies it under strict filters. Done that way, even an agent that gets prompt-injected can't do real damage, because it never held the keys. So the discipline I'm adopting: when a tool offers to hand your agent direct write credentials to something that matters, **refuse the write token.** Make it propose. Let something deterministic dispose.
+The strongest version isn't a polite instruction to behave — it's the substrate refusing to give the agent write access at all. The agent produces a buffered proposal; a separate, trusted post-stage applies it under strict filters. Even an agent that gets prompt-injected can't do damage, because it never held the keys. So the discipline I'm adopting: when a tool offers your agent direct write credentials to something that matters, **refuse the write token.** Make it propose. Let something deterministic dispose.
 
 ---
 
@@ -329,7 +329,7 @@ A few named patterns are worth knowing. A **Panel** has several specialists revi
 
 Two rules keep this from turning into chaos. First, **agents coordinate only through committed files**, never through shared memory. Committed code is the single source of truth passed between them. Second, the **one-file-one-agent rule**: within a single wave, no two agents touch the same file, ever. Break that and you get silent, cascading edit failures where the second agent's edits no longer match the text they were aiming at.
 
-But the most valuable thing here is the honesty about cost. In the book's big case study, 75 files across 5 concerns, the agents computed for 24 minutes and the human coordinated for about 45. Multi-agent **did not save wall-clock time**. What it bought was *quality*, by never letting any one context window rot. You're trading planning time for output you don't have to debug afterwards. Sometimes that's a great trade, sometimes it's overkill, and knowing the difference is the actual skill.
+But the most valuable thing here is the honesty about cost. In the book's big case study — 75 files, 5 concerns — the agents computed for 24 minutes and the human coordinated for 45. Multi-agent **did not save wall-clock time**. What it bought was *quality*, by never letting any one context window rot. You trade planning time for output you don't have to debug afterwards. Sometimes that's a great trade, sometimes it's overkill, and knowing the difference is the actual skill.
 
 ---
 
@@ -367,7 +367,7 @@ My favourite definition of a right-sized task comes from here: **the best task i
 
 ## What have we learned?
 
-When I wrote my first post, I thought the lesson was "give the AI good context and it does good work." That's still true. But it was the view from the outside. Part III is the view from the inside, and it turns a bunch of things I was doing by feel into things I now understand.
+When I wrote my first post, I thought the lesson was "give the AI good context and it does good work." Still true — but that was the view from the outside. Part III is the view from the inside, and it turns things I was doing by feel into things I now understand.
 
 The agent isn't a magic box, and it isn't a colleague. It's a fast, amnesiac, wildly capable junior who forgets everything the instant the session ends, whose attention sags in the middle of anything long, who will state a wrong answer with total confidence, and whose only durable memory is the filesystem you write to. Once you actually design around those facts, instead of being surprised by them every time, the whole thing gets calmer and more reliable.
 
