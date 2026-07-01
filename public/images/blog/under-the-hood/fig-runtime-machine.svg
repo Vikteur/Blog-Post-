@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440" role="img" aria-label="The runtime machine: agent source code is compiled by the harness into context for the model, triggered by a client">
+  <defs>
+    <linearGradient id="acc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#818cf8"/></linearGradient>
+    <marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5a6ea0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="1000" height="440" rx="18" fill="#0e1730" stroke="#26325a" stroke-width="1.5"/>
+  <text x="44" y="52" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="700" letter-spacing="3" fill="#6ea8fe">THE RUNTIME MACHINE</text>
+
+  <!-- client -->
+  <rect x="410" y="86" width="180" height="58" rx="12" fill="#111d3a" stroke="#33477e" stroke-width="1.5"/>
+  <text x="500" y="114" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#e2e8f0">Client</text>
+  <text x="500" y="134" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#7f92b8">terminal · IDE · webhook</text>
+  <line x1="500" y1="144" x2="500" y2="196" stroke="#5a6ea0" stroke-width="1.6" marker-end="url(#ar1)"/>
+
+  <!-- source files -->
+  <text x="44" y="205" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#93a4c4">Agent source code</text>
+  <g font-family="Inter, system-ui, sans-serif">
+    <rect x="44" y="220" width="200" height="40" rx="9" fill="#141f3e" stroke="#2d3f6e"/><text x="62" y="245" font-size="16" fill="#dbe4f5">project.md</text>
+    <rect x="44" y="270" width="200" height="40" rx="9" fill="#141f3e" stroke="#2d3f6e"/><text x="62" y="295" font-size="16" fill="#dbe4f5">SKILL.md</text>
+    <rect x="44" y="320" width="200" height="40" rx="9" fill="#141f3e" stroke="#2d3f6e"/><text x="62" y="345" font-size="16" fill="#dbe4f5">.instructions.md</text>
+  </g>
+  <line x1="252" y1="290" x2="356" y2="290" stroke="#5a6ea0" stroke-width="1.6" marker-end="url(#ar1)"/>
+
+  <!-- harness (the compiler) -->
+  <rect x="362" y="222" width="276" height="140" rx="16" fill="#16234a" stroke="url(#acc1)" stroke-width="3"/>
+  <text x="500" y="278" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="800" fill="#ffffff">Harness</text>
+  <text x="500" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" fill="#8fb4ff">= the compiler</text>
+  <text x="500" y="335" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#7f92b8">decides what loads, in what order</text>
+  <line x1="646" y1="290" x2="750" y2="290" stroke="#5a6ea0" stroke-width="1.6" marker-end="url(#ar1)"/>
+
+  <!-- model -->
+  <rect x="756" y="240" width="200" height="104" rx="14" fill="#111d3a" stroke="#33477e" stroke-width="1.5"/>
+  <text x="856" y="290" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#e2e8f0">Model</text>
+  <text x="856" y="314" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#7f92b8">amnesiac brain</text>
+
+  <text x="500" y="410" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-style="italic" fill="#9fb0d0">Same source + a different harness = a different running program.</text>
+</svg>

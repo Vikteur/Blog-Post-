@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520" role="img" aria-label="PROSE: the five constraints - Progressive Disclosure, Reduced Scope, Orchestrated Composition, Safety Boundaries, Explicit Hierarchy">
+  <defs>
+    <linearGradient id="acc4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#818cf8"/></linearGradient>
+  </defs>
+  <rect width="1000" height="520" rx="18" fill="#0e1730" stroke="#26325a" stroke-width="1.5"/>
+  <text x="44" y="56" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="800" fill="#f8fafc">PROSE</text>
+  <text x="164" y="56" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#93a4c4">: the physics of working with agents, as five rules</text>
+
+  <g font-family="Inter, system-ui, sans-serif">
+    <!-- rows -->
+    <g>
+      <rect x="44" y="86" width="64" height="64" rx="12" fill="url(#acc4)"/><text x="76" y="130" text-anchor="middle" font-size="34" font-weight="800" fill="#0e1730">P</text>
+      <text x="130" y="118" font-size="21" font-weight="700" fill="#eef2fb">Progressive Disclosure</text>
+      <text x="130" y="142" font-size="15" fill="#93a4c4">Load context just-in-time, not just-in-case.</text>
+    </g>
+    <g>
+      <rect x="44" y="166" width="64" height="64" rx="12" fill="url(#acc4)"/><text x="76" y="210" text-anchor="middle" font-size="34" font-weight="800" fill="#0e1730">R</text>
+      <text x="130" y="198" font-size="21" font-weight="700" fill="#eef2fb">Reduced Scope</text>
+      <text x="130" y="222" font-size="15" fill="#93a4c4">Size every task to fit the context window.</text>
+    </g>
+    <g>
+      <rect x="44" y="246" width="64" height="64" rx="12" fill="url(#acc4)"/><text x="76" y="290" text-anchor="middle" font-size="34" font-weight="800" fill="#0e1730">O</text>
+      <text x="130" y="278" font-size="21" font-weight="700" fill="#eef2fb">Orchestrated Composition</text>
+      <text x="130" y="302" font-size="15" fill="#93a4c4">Small, chainable primitives over one monolith.</text>
+    </g>
+    <g>
+      <rect x="44" y="326" width="64" height="64" rx="12" fill="url(#acc4)"/><text x="76" y="370" text-anchor="middle" font-size="34" font-weight="800" fill="#0e1730">S</text>
+      <text x="130" y="358" font-size="21" font-weight="700" fill="#eef2fb">Safety Boundaries</text>
+      <text x="130" y="382" font-size="15" fill="#93a4c4">Explicit limits on tools, knowledge and authority.</text>
+    </g>
+    <g>
+      <rect x="44" y="406" width="64" height="64" rx="12" fill="url(#acc4)"/><text x="76" y="450" text-anchor="middle" font-size="34" font-weight="800" fill="#0e1730">E</text>
+      <text x="130" y="438" font-size="21" font-weight="700" fill="#eef2fb">Explicit Hierarchy</text>
+      <text x="130" y="462" font-size="15" fill="#93a4c4">Global to local, and local can override.</text>
+    </g>
+  </g>
+</svg>

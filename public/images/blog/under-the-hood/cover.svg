@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Under the Hood: What the Agentic SDLC Handbook taught me about working with agents">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1020"/><stop offset="1" stop-color="#0e1730"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity="0.26"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#2a3a63" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif" text-anchor="middle">
+    <text x="600" y="258" font-size="20" font-weight="700" letter-spacing="4" fill="#6ea8fe">THE AGENTIC SDLC HANDBOOK</text>
+    <text x="600" y="344" font-size="66" font-weight="800" letter-spacing="-1" fill="#f8fafc">Under the <tspan fill="url(#accent)">Hood</tspan></text>
+    <text x="600" y="392" font-size="23" font-weight="500" fill="#93a4c4">What happens when you work with agents</text>
+    <text x="600" y="428" font-size="19" font-weight="600" fill="#cbd5e1">Viktor Van Steenweghen</text>
+  </g>
+</svg>
