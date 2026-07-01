@@ -204,7 +204,7 @@ The goal is not to write less code, it is to write better code, faster. Develope
   title: 'Under the Hood: What the Agentic SDLC Handbook Taught Me About Actually Working With Agents',
   content: `A few months ago I wrote about handing an AI a project.md and a handful of skills and watching it build a clean little Spring Boot backend. I was pretty pleased with myself. I had a system. I had structure. I felt like I'd figured out how this whole thing works.
 
-Then a link landed in my feed: the Agentic SDLC Handbook. I opened it expecting the usual "AI will change everything" fluff. Parts I and II are aimed at leaders and strategists, and they're good, but they're not what stopped me. What stopped me was **Part III: For Practitioners**. That's the part written for people who actually have their hands on the keyboard. The machine-room part.
+Then a link landed in my feed: the [Agentic SDLC Handbook](https://danielmeppiel.github.io/agentic-sdlc-handbook/). I opened it expecting the usual "AI will change everything" fluff. Parts I and II are aimed at leaders and strategists, and they're good, but they're not what stopped me. What stopped me was **Part III: For Practitioners**. That's the part written for people who actually have their hands on the keyboard. The machine-room part.
 
 And it was humbling. Everything in that last post worked, but I'd been running on instinct. I knew *that* a project.md helped, not *why*. Part III is the "why". It names the things I'd been feeling my way around in the dark.
 
@@ -384,7 +384,7 @@ None of this is about writing less code. It's the same lesson as last time, one 
 - **git diff is ground truth.** Never trust an agent's self-report over version control.
 - **Fix the primitive, not the output.** A manual correction fixes today. A better instruction file fixes every tomorrow.
 
-The handbook is free, and Part III is the part that earns the whole thing. If you work with agents every day, go read it: https://danielmeppiel.github.io/agentic-sdlc-handbook/`,
+The handbook is free, and Part III is the part that earns the whole thing. If you work with agents every day, [go read it](https://danielmeppiel.github.io/agentic-sdlc-handbook/).`,
   summary: 'I set up my skills and project.md on instinct. Then I read Part III of the Agentic SDLC Handbook and finally understood the machinery underneath: why the harness matters more than the model, why attention is not the same as context, and why git diff is the only report you can trust.',
   date: '2026-07-01T00:00:00.000Z',
   topic: 'AI',
