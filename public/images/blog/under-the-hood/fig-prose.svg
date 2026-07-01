@@ -4,7 +4,7 @@
   </defs>
   <rect width="1000" height="520" rx="18" fill="#0e1730" stroke="#26325a" stroke-width="1.5"/>
   <text x="44" y="56" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="800" fill="#f8fafc">PROSE</text>
-  <text x="164" y="56" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#93a4c4">— the physics of working with agents, as five rules</text>
+  <text x="164" y="56" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#93a4c4">: the physics of working with agents, as five rules</text>
 
   <g font-family="Inter, system-ui, sans-serif">
     <!-- rows -->
