@@ -44,6 +44,10 @@ const mockProfile: ProfileInfo = {
 
   skills: [
    {
+    name: 'AI',
+    level: 80,
+    category: 'tools'
+  },{
     name: 'Java',
     level: 75,
     category: 'language'
