@@ -19,7 +19,7 @@ export function SEO({
   title,
   description,
   canonicalUrl,
-  ogImage = 'https://viktorvansteenweghen.com/og-image.jpg',
+  ogImage = 'https://viktorvansteenweghen.com/og-image.png',
   ogType = 'website',
   article,
   structuredData

@@ -105,7 +105,12 @@ export function BlogPostDetail() {
           description={post.content.substring(0, 160)}
           canonicalUrl={`https://viktorvansteenweghen.com/post/${postId}`}
           ogType="article"
-          ogImage={post.image || undefined}
+          ogImage={
+            post.image
+              ? 'https://viktorvansteenweghen.com' +
+                (post.image.endsWith('.svg') ? post.image.replace(/\.svg$/, '.png') : post.image)
+              : undefined
+          }
           article={{
             publishedTime: new Date(post.date).toISOString(),
             author: post.author,
